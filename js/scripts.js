@@ -11,6 +11,7 @@ pokemonList = [
 ];
 
 for (let i=0;i<pokemonList.length;i++){
-	//document.write(pokemonList[i].name + " " + pokemonList[i].height + "<br>");
-	document.write(`${pokemonList[i].name} ${pokemonList[i].height}<br>`);
+	let bigPokemon = pokemonList[i].height > 8 ?"WOW - that is a big Pokemon!" :"";
+	//document.write(pokemonList[i].name + " " + pokemonList[i].height + " " + bigPokemon +"<br><br>");
+	document.write(`${pokemonList[i].name} ${pokemonList[i].height} ${bigPokemon}<br><br>`);
 }
