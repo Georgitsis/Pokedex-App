@@ -1,28 +1,34 @@
 //Nesting PokemonList in a IIEF
 let pokemonRepository = (function () {
 	let pokemonList = [];
-  
-	function add(item) {
-		if(isPokemon(item))
-			pokemonList.push(item);
-		else
-			alert("Not a Pokemon");
-	}
-  
-	function getAll() {
-	  return pokemonList;
-	}
 
+function getAll() {
+	  return pokemonList;
+}
+
+function add(item) {
+	if(isPokemon(item))
+		pokemonList.push(item);
+	else
+		alert("Not a Pokemon");
+}
+
+function findPokemonByName(pokemonName){
+	let results = pokemonList.filter(pokemon => pokemon.name === pokemonName);
+	writePokemonsOnDocument(results);
+}
 	return {
 	  add : add,
 	  getAll : getAll,
+	  findPokemonByName : findPokemonByName
 	};
 })();
   
-//*****Function declarations**********
+//**********************************************************************Function declarations*******************************************
 
 // isPokemon() : Will return true if item is a "pokemon" by checking that it is an object, checking that it has the correct object keys and checking that the data stored in the object keys has the correct type.
 // Otherwise it will return false.
+
 function isPokemon(item){
 	let correctObjectKeys = ["name","height","types"];
 	let correctObjectKeysTypes = ["string","number","object"]
@@ -39,7 +45,12 @@ function isPokemon(item){
 	return true;
 }
 
-
+function writePokemonsOnDocument(listOfPokemon){
+	listOfPokemon.forEach(function(singlePokemon){
+		document.write(`${singlePokemon.name} is ${singlePokemon.height} m tall<br>`);
+	})
+}
+//************************************************************************************************************************************
 
 pokemonRepository.add({ name: 'Bulbasaur', height: 0.7, types: ['grass', 'poison']});
 pokemonRepository.add({  name: 'Pikachu', height: 0.4, types: ['electric']});
@@ -49,22 +60,9 @@ pokemonRepository.add({ name: 'Drapion', height: 1.3, types: ['poison','dark']})
 pokemonRepository.add({ engine:"electric", wheels : 4});												//object to test the isPokemon function
 
 
-for (let i=0;i<pokemonRepository.getAll().length;i++){
-	let bigPokemon = pokemonRepository.getAll()[i].height > 8 ?"WOW - that is a big Pokemon!" :"";
-	//document.write(pokemonList[i].name + " " + pokemonList[i].height + " " + bigPokemon +"<br><br>");
-	document.write(`${pokemonRepository.getAll()[i].name} ${pokemonRepository.getAll()[i].height} ${bigPokemon}<br><br>`);
-}
+pokemonRepository.getAll().forEach(function(pokemon){
+	let bigPokemon = pokemon.height > 8 ?" - WOW - that is a big Pokemon!" :"";
+	document.write(`${pokemon.name} is ${pokemon.height} m tall${bigPokemon}<br>`);
+})
 
-/*let array = ["name","height","types"];
-document.write(array.toString() + "<br>");
-//if("name,height,types" === Object.keys(pokemonRepository.getAll()[0]))
-	document.write(Object.keys(pokemonRepository.getAll()[0]) + "<br><br>");
-
-	let a=array;
-	let b=Object.keys(pokemonRepository.getAll()[0]);
-	//if(array.toString()===Object.keys(pokemonRepository.getAll()[0]))
-	document.write(a.toString().trim());
-	document.write(b.toString().trim());
-	if("name,height,types"===b.toString())
-	//document.write("NOW IT WORKED")
-*/
+pokemonRepository.findPokemonByName("Weedle");															//Find a pokemon saved in the repository by name and print it out
