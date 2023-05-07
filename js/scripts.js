@@ -3,10 +3,12 @@
 let pokemonRepository = (function () {
 	let pokemonList = [];
 
+/* returns the entire pokemon list*/
 function getAll() {
 	  return pokemonList;
 }
 
+/* If item is a valid pokemon object it will be added to the pokemon list*/
 function add(item) {
 	if(isPokemon(item))
 		pokemonList.push(item);
@@ -25,17 +27,26 @@ function addListItem(pokemon) {
 	let ListElement = document.createElement('li');						//create a new list element
 	let pokemonButton = document.createElement('button');				//create a new pokemon button
 	pokemonButton.classList.add('pokemonButton');						//add pokemonButton class to the button
+	pokemonButton.addEventListener("click", function(){				//add an event listener to the button
+		showDetails(pokemon);
+	});
 	pokemonButton.innerText = pokemon.name;								//Set inner text of button to the pokemon name
 	let pokemonList = document.querySelector("ul.pokemon-list");	//Select the ul element with pokemon-list class
 	pokemonList.appendChild(ListElement);									//add a list item to ul.pokemon.list
-	ListElement.appendChild(pokemonButton); 								//add a button the list element
+	ListElement.appendChild(pokemonButton); 								//add a button to the list element
+}
+
+/*gives out an alert with pokemon name and size */
+function showDetails(pokemon){
+	alert(`${pokemon.name} is ${pokemon.height} m tall`);
 }
 
 	return {
 	  add : add,
 	  getAll : getAll,
 	  findPokemonByName : findPokemonByName,
-	  addListItem : addListItem 
+	  addListItem : addListItem,
+	  showDetails : showDetails
 	};
 })();
   
