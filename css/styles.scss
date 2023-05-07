@@ -1,8 +1,11 @@
+$bodyBackgroundColor: rgb(139, 209, 209);
+
 * {
    box-sizing: border-box;
 }
 
 body {
+   background-color: $bodyBackgroundColor;
    max-width: 700px;
    margin: 100px auto auto;
 }
