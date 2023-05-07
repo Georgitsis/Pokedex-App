@@ -36,6 +36,7 @@ li{
    color: $mainFontColor;
    width: 150px;
    transition: background-color 0.2s linear 0s;
+   transition: opacity 0.2s linear 0s;
    
 
    &:hover{
@@ -43,7 +44,5 @@ li{
    }
    &:active{
       opacity: 0.8;
-
    }
-
 }
