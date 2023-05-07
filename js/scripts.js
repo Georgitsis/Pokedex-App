@@ -27,9 +27,7 @@ function addListItem(pokemon) {
 	let ListElement = document.createElement('li');						//create a new list element
 	let pokemonButton = document.createElement('button');				//create a new pokemon button
 	pokemonButton.classList.add('pokemonButton');						//add pokemonButton class to the button
-	pokemonButton.addEventListener("click", function(){				//add an event listener to the button
-		showDetails(pokemon);
-	});
+	addPokemonButtonEvent(pokemonButton,pokemon);						//adds a click event to the pokemon button
 	pokemonButton.innerText = pokemon.name;								//Set inner text of button to the pokemon name
 	let pokemonList = document.querySelector("ul.pokemon-list");	//Select the ul element with pokemon-list class
 	pokemonList.appendChild(ListElement);									//add a list item to ul.pokemon.list
@@ -41,12 +39,19 @@ function showDetails(pokemon){
 	alert(`${pokemon.name} is ${pokemon.height} m tall`);
 }
 
+function addPokemonButtonEvent(button, pokemon){
+	button.addEventListener("click", function () {
+		showDetails(pokemon);
+	})
+}
+
 	return {
 	  add : add,
 	  getAll : getAll,
 	  findPokemonByName : findPokemonByName,
 	  addListItem : addListItem,
-	  showDetails : showDetails
+	  showDetails : showDetails,
+	  addPokemonButtonEvent : addPokemonButtonEvent
 	};
 })();
   
