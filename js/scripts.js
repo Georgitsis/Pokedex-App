@@ -24,9 +24,9 @@ function findPokemonByName(pokemonName){
 function addListItem(pokemon) {
 	let ListElement = document.createElement('li');						//create a new list element
 	let pokemonButton = document.createElement('button');				//create a new pokemon button
-	pokemonButton.innerText = pokemon.name;
+	pokemonButton.classList.add('pokemonButton');						//add pokemonButton class to the button
+	pokemonButton.innerText = pokemon.name;								//Set inner text of button to the pokemon name
 	let pokemonList = document.querySelector("ul.pokemon-list");	//Select the ul element with pokemon-list class
-	
 	pokemonList.appendChild(ListElement);									//add a list item to ul.pokemon.list
 	ListElement.appendChild(pokemonButton); 								//add a button the list element
 }
