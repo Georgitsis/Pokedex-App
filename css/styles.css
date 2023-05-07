@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  font-family: "IBM Plex Mono";
 }
 
 body {
@@ -8,6 +9,18 @@ body {
   margin: 100px auto auto;
 }
 
-ul {
+ul.pokemon-list {
   list-style-type: none;
+  font-size: 80px;
+  font-weight: 700;
+  font-style: italic;
+}
+
+li {
+  font-size: 10px;
+}
+
+.pokemonButton {
+  font-size: 20px;
+  font-weight: 100;
 }/*# sourceMappingURL=styles.css.map */
