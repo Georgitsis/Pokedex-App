@@ -21,7 +21,7 @@ function findPokemonByName(pokemonName){
 }
 
 /* Expects a pokemon object as parameter. Will create a list item for the pokemon */
-addListItem(pokemon){
+function addListItem(pokemon) {
 	let ListElement = document.createElement('li');						//create a new list element
 	let pokemonButton = document.createElement('button');				//create a new pokemon button
 	pokemonButton.innerText = pokemon.name;
@@ -34,7 +34,8 @@ addListItem(pokemon){
 	return {
 	  add : add,
 	  getAll : getAll,
-	  findPokemonByName : findPokemonByName
+	  findPokemonByName : findPokemonByName,
+	  addListItem : addListItem 
 	};
 })();
   
@@ -76,12 +77,5 @@ pokemonRepository.add({ name: 'Weedle', height: 0.3, types: ['bug', 'poison']});
 
 
 pokemonRepository.getAll().forEach(function(pokemon){
-	let bigPokemon = pokemon.height > 8 ?" - WOW - that is a big Pokemon!" :"";
-	document.write(`${pokemon.name} is ${pokemon.height} m tall${bigPokemon}<br>`);
-})
-
-pokemonRepository.findPokemonByName("Weedle");															//Find a pokemon saved in the repository by name and print it out
-
-pokemonRepository.findPokemonByName("Weedle").forEach(function(pokemon){
-	document.write(`${pokemon.name} is ${pokemon.height} m tall<br>`);
+	pokemonRepository.addListItem(pokemon);	
 })
