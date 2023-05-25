@@ -11,10 +11,10 @@ function getAll() {
 
 /* If item is a valid pokemon object it will be added to the pokemon list*/
 function add(item) {
-	if(isPokemon(item))
-		pokemonList.push(item);
-	else
-		alert("Not a Pokemon");
+	//if(isPokemon(item))
+	pokemonList.push(item);
+	//else
+	//	alert("Not a Pokemon");
 }
 
 /* expects a string as parameter and searches the pokemon list for an exact name match. Returns an array of objects if several matches */ 
@@ -37,7 +37,7 @@ function addListItem(pokemon) {
 
 /*gives out an alert with pokemon name and size */
 function showDetails(pokemon){
-	alert(`${pokemon.name} is ${pokemon.height} m tall`);
+	loadDetails(pokemon);
 }
 
 function addPokemonButtonEvent(button, pokemon){
@@ -47,19 +47,34 @@ function addPokemonButtonEvent(button, pokemon){
 }
 
 function loadList() {
+
 	return fetch(apiUrl).then(function (response) {		//fetch(apiUrl) passes on a list of pokemon to parameter "response" . For now it is an object response (an object)
-	  return response.json();									//response.jason() returns a promise which passes the JSON object array as parameter(jason next line) to the next function
-	}).then(function (json) {
-	  json.results.forEach(function (item) {
-		 let pokemon = {
-			name: item.name,
-			detailsUrl: item.url
-		 };
-		 add(pokemon);
+		return response.json();									//response.jason() returns a promise which passes the JSON object array as parameter(jason next line) to the next function
+	}).then(function (json) {	
+		json.results.forEach(function (item) {
+			let pokemon = {
+				name: item.name,
+				detailsUrl: item.url
+		 	};
+			add(pokemon);
 	  });
 	}).catch(function (e) {
 	  console.error(e);
 	})
+ }
+ 
+ function loadDetails(item) {
+	let url = item.detailsUrl;
+	return fetch(url).then(function (response) {
+	  return response.json();
+	}).then(function (details) {
+	  // Now we add the details to the item
+	  item.imageUrl = details.sprites.front_default;
+	  item.height = details.height;
+	  item.types = details.types;
+	}).catch(function (e) {
+	  console.error(e);
+	});
  }
 
 	return {
@@ -98,7 +113,7 @@ function isPokemon(item){
 }*/
 
 function isPokemon(item){
-	let correctObjectKeys = ["name","url"];
+	let correctObjectKeys = ["name","detailsUrl"];
 	let correctObjectKeysTypes = ["string","string"]
 	if(typeof item !== "object")
 		return false;
@@ -129,7 +144,19 @@ pokemonRepository.add({ name: 'Drapion', height: 1.3, types: ['poison','dark']})
 pokemonRepository.add({ name: 'Weedle', height: 0.3, types: ['bug', 'poison']});
 //pokemonRepository.add({ engine:"electric", wheels : 4});												//object to test the isPokemon function*/
 
-
-pokemonRepository.getAll().forEach(function(pokemon){
-	pokemonRepository.addListItem(pokemon);	
-})
+/*let myPromise = new Promise(function(){
+	pokemonRepository.loadList();
+});
+//pokemonRepository.loadList();
+myPromise.then(function(){
+	alert("assafasfasgsdgsdfasf");
+	pokemonRepository.getAll().forEach(function(pokemon){
+		pokemonRepository.addListItem(pokemon);
+	})
+});*/
+pokemonRepository.loadList();
+setTimeout(function(){
+	pokemonRepository.getAll().forEach(function(pokemon){
+	pokemonRepository.addListItem(pokemon);
+	})
+},10000);
