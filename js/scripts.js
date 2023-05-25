@@ -2,6 +2,7 @@
 
 let pokemonRepository = (function () {
 	let pokemonList = [];
+	let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=150";
 
 /* returns the entire pokemon list*/
 function getAll() {
@@ -45,13 +46,31 @@ function addPokemonButtonEvent(button, pokemon){
 	})
 }
 
+function loadList() {
+	return fetch(apiUrl).then(function (response) {		//fetch(apiUrl) passes on a list of pokemon to parameter "response" . For now it is an object response (an object)
+	  return response.json();									//response.jason() returns a promise which passes the JSON object array as parameter(jason next line) to the next function
+	}).then(function (json) {
+	  json.results.forEach(function (item) {
+		 let pokemon = {
+			name: item.name,
+			detailsUrl: item.url
+		 };
+		 add(pokemon);
+	  });
+	}).catch(function (e) {
+	  console.error(e);
+	})
+ }
+
 	return {
-	  add : add,
-	  getAll : getAll,
-	  findPokemonByName : findPokemonByName,
-	  addListItem : addListItem,
-	  showDetails : showDetails,
-	  addPokemonButtonEvent : addPokemonButtonEvent
+	  	add : add,
+	  	getAll : getAll,
+	  	findPokemonByName : findPokemonByName,
+	  	addListItem : addListItem,
+	  	showDetails : showDetails,
+	  	addPokemonButtonEvent : addPokemonButtonEvent,
+	  	loadList : loadList,
+		loadDetails : loadDetails
 	};
 })();
   
@@ -59,6 +78,8 @@ function addPokemonButtonEvent(button, pokemon){
 
 // isPokemon() : Will return true if item is a "pokemon" by checking that it is an object, checking that it has the correct object keys and checking that the data stored in the object keys has the correct type.
 // Otherwise it will return false.
+
+/* old isPokemon function
 
 function isPokemon(item){
 	let correctObjectKeys = ["name","height","types"];
@@ -74,7 +95,24 @@ function isPokemon(item){
 			return false;
 	})
 	return true;
+}*/
+
+function isPokemon(item){
+	let correctObjectKeys = ["name","url"];
+	let correctObjectKeysTypes = ["string","string"]
+	if(typeof item !== "object")
+		return false;
+	else if (Object.keys(item).toString()!=="name,url")
+		return false;
+	Object.keys(item).forEach(function (objectKey,index) {
+		if(objectKey !== correctObjectKeys[index])
+			return false;
+		else if (typeof item[objectKey]!==correctObjectKeysTypes[index])
+			return false;
+	})
+	return true;
 }
+
 
 function writePokemonsOnDocument(listOfPokemon){
 	listOfPokemon.forEach(function(singlePokemon){
@@ -83,13 +121,13 @@ function writePokemonsOnDocument(listOfPokemon){
 }
 /************************************************************************************************************************************/
 
-pokemonRepository.add({ name: 'Bulbasaur', height: 0.7, types: ['grass', 'poison']});
+/*pokemonRepository.add({ name: 'Bulbasaur', height: 0.7, types: ['grass', 'poison']});
 pokemonRepository.add({  name: 'Pikachu', height: 0.4, types: ['electric']});
 pokemonRepository.add({ name: 'Weedle', height: 0.3, types: ['bug', 'poison']});
 pokemonRepository.add({ name: 'Onix', height: 8.8, types: ['rock', 'ground']});
 pokemonRepository.add({ name: 'Drapion', height: 1.3, types: ['poison','dark']});
 pokemonRepository.add({ name: 'Weedle', height: 0.3, types: ['bug', 'poison']});
-//pokemonRepository.add({ engine:"electric", wheels : 4});												//object to test the isPokemon function
+//pokemonRepository.add({ engine:"electric", wheels : 4});												//object to test the isPokemon function*/
 
 
 pokemonRepository.getAll().forEach(function(pokemon){
