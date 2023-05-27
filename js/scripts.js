@@ -37,7 +37,11 @@ function addListItem(pokemon) {
 
 /*gives out an alert with pokemon name and size */
 function showDetails(pokemon){
-	loadDetails(pokemon);
+	loadDetails(pokemon).then(function(){
+		console.log(pokemon.name);
+		console.log(pokemon.height);
+		console.log(pokemon.imageUrl);
+	})
 }
 
 function addPokemonButtonEvent(button, pokemon){
@@ -144,19 +148,9 @@ pokemonRepository.add({ name: 'Drapion', height: 1.3, types: ['poison','dark']})
 pokemonRepository.add({ name: 'Weedle', height: 0.3, types: ['bug', 'poison']});
 //pokemonRepository.add({ engine:"electric", wheels : 4});												//object to test the isPokemon function*/
 
-/*let myPromise = new Promise(function(){
-	pokemonRepository.loadList();
-});
-//pokemonRepository.loadList();
-myPromise.then(function(){
-	alert("assafasfasgsdgsdfasf");
+pokemonRepository.loadList().then(function(){
 	pokemonRepository.getAll().forEach(function(pokemon){
 		pokemonRepository.addListItem(pokemon);
 	})
-});*/
-pokemonRepository.loadList();
-setTimeout(function(){
-	pokemonRepository.getAll().forEach(function(pokemon){
-	pokemonRepository.addListItem(pokemon);
-	})
-},10000);
+})
+
