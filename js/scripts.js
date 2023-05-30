@@ -1,11 +1,13 @@
 //Modal
 let pokemonModal = (function() {
 
+//expects pokemonName, pokemonHeight, pokemonTypes,imageSourceUrl as paramters to display the modal correctly
+
 	function showModal(pokemonName, pokemonHeight, pokemonTypes,imageSourceUrl) {
 		let modalContainer = document.querySelector('#modal-container');
 	 
 		// Clear all existing modal content
-		//modalContainer.innerHTML = '';
+		modalContainer.innerHTML = '';
 	 
 		let modal = document.createElement('div');
 		modal.classList.add('modal');
@@ -16,23 +18,30 @@ let pokemonModal = (function() {
 		closeButtonElement.innerText = 'Close';
 		closeButtonElement.addEventListener('click', hideModal);
 		
+		//picture element created and source set
 		let pictureElement = document.createElement('img');
 		pictureElement.src = imageSourceUrl;
 
+		//creating the modal header, setting the displayed text and capitalizing the first letter
 		let titleElement = document.createElement('h1');
-		titleElement.innerText = pokemonName;
-  
+		titleElement.innerText = pokemonName.charAt(0).toUpperCase() + pokemonName.slice(1); //...and capitalize first letter
+		
+		//creating the modal content. Displayed attributes: pokemon height and its types. pokemon types are being converted from an object array
+		//to a formatted text by the function TypesToString 
 		let contentElement = document.createElement('p');
-		contentElement.innerText = "Height: " + pokemonHeight/10 + "m" + " Types: " + TypesToString(pokemonTypes);
-	 
+		contentElement.innerText = "Height: " + pokemonHeight/10 + "m" + "\n" + " Types: " + TypesToString(pokemonTypes);
+		
+		//new html elements are appended to thei parent elements
 		modal.appendChild(closeButtonElement);
 		modal.appendChild(pictureElement);
 		modal.appendChild(titleElement);
 		modal.appendChild(contentElement);
 		modalContainer.appendChild(modal);
-	 
+		
+		//adding class "is-visible" to modal container
 		modalContainer.classList.add('is-visible');
   
+		//if user clicks outside of modal close modal
 		modalContainer.addEventListener('click', (e) => {
 		  // Since this is also triggered when clicking INSIDE the modal
 		  // We only want to close if the user clicks directly on the overlay
@@ -43,6 +52,7 @@ let pokemonModal = (function() {
 		});
 	}
 
+	//hides the modal by removing the is-visible class from modal container	
 	function hideModal() {
 		let modalContainer = document.querySelector('#modal-container');
 		modalContainer.classList.remove('is-visible');
@@ -104,7 +114,7 @@ function addListItem(pokemon) {
 	let pokemonButton = document.createElement('button');				//create a new pokemon button
 	pokemonButton.classList.add('pokemonButton');						//add pokemonButton class to the button
 	addPokemonButtonEvent(pokemonButton,pokemon);						//adds a click event to the pokemon button
-	pokemonButton.innerText = pokemon.name;								//Set inner text of button to the pokemon name
+	pokemonButton.innerText = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);	//Set inner text of button to the pokemon name, capitalize first letter
 	let pokemonList = document.querySelector("ul.pokemon-list");	//Select the ul element with pokemon-list class
 	pokemonList.appendChild(ListElement);									//add a list item to ul.pokemon.list
 	ListElement.appendChild(pokemonButton); 								//add a button to the list element
