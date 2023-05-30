@@ -1,4 +1,60 @@
-//Nesting PokemonList in a IIEF
+//Modal
+let pokemonModal = (function() {
+
+	function showModal(pokemonName, pokemonHeight, pokemonTypes,imageSourceUrl) {
+		let modalContainer = document.querySelector('#modal-container');
+	 
+		// Clear all existing modal content
+		//modalContainer.innerHTML = '';
+	 
+		let modal = document.createElement('div');
+		modal.classList.add('modal');
+	 
+		// Add the new modal content
+		let closeButtonElement = document.createElement('button');
+		closeButtonElement.classList.add('modal-close');
+		closeButtonElement.innerText = 'Close';
+		closeButtonElement.addEventListener('click', hideModal);
+		
+		let pictureElement = document.createElement('img');
+		pictureElement.src = imageSourceUrl;
+
+		let titleElement = document.createElement('h1');
+		titleElement.innerText = pokemonName;
+  
+		let contentElement = document.createElement('p');
+		contentElement.innerText = "Height: " + pokemonHeight + " Types: " + pokemonTypes ;
+	 
+		modal.appendChild(closeButtonElement);
+		modal.appendChild(pictureElement);
+		modal.appendChild(titleElement);
+		modal.appendChild(contentElement);
+		modalContainer.appendChild(modal);
+	 
+		modalContainer.classList.add('is-visible');
+  
+		modalContainer.addEventListener('click', (e) => {
+		  // Since this is also triggered when clicking INSIDE the modal
+		  // We only want to close if the user clicks directly on the overlay
+		  let target = e.target;
+		  if (target === modalContainer) {
+			 hideModal();
+		  }
+		});
+	}
+
+	function hideModal() {
+		let modalContainer = document.querySelector('#modal-container');
+		modalContainer.classList.remove('is-visible');
+	 }
+
+	return {
+		showModal : showModal,
+		hideModal : hideModal
+	}
+})();
+
+//Nesting PokemonList in a IIFE
 
 let pokemonRepository = (function () {
 	let pokemonList = [];
@@ -38,20 +94,21 @@ function addListItem(pokemon) {
 /*gives out an alert with pokemon name and size */
 function showDetails(pokemon){
 	loadDetails(pokemon).then(function(){
-		console.log(pokemon.name);
+		/*console.log(pokemon.name);
 		console.log(pokemon.height);
-		console.log(pokemon.imageUrl);
+		console.log(pokemon.imageUrl);*/
+		pokemonModal.showModal(pokemon.name,pokemon.height,pokemon.types,pokemon.imageUrl);
 	})
 }
-
+//shows details (through an event listener) when pokemon button is pressed
 function addPokemonButtonEvent(button, pokemon){
 	button.addEventListener("click", function () {
 		showDetails(pokemon);
 	})
 }
 
+//fetches list from API and add pokemon to pokemonList[]
 function loadList() {
-
 	return fetch(apiUrl).then(function (response) {		//fetch(apiUrl) passes on a list of pokemon to parameter "response" . For now it is an object response (an object)
 		return response.json();									//response.jason() returns a promise which passes the JSON object array as parameter(jason next line) to the next function
 	}).then(function (json) {	
@@ -66,8 +123,9 @@ function loadList() {
 	  console.error(e);
 	})
  }
- 
- function loadDetails(item) {
+
+//loads a pokemon's details by using the url saved in the pokemon object 
+function loadDetails(item) {
 	let url = item.detailsUrl;
 	return fetch(url).then(function (response) {
 	  return response.json();
@@ -93,28 +151,13 @@ function loadList() {
 	};
 })();
   
+
+
+
 /**********************************************************************Function declarations*******************************************/
 
 // isPokemon() : Will return true if item is a "pokemon" by checking that it is an object, checking that it has the correct object keys and checking that the data stored in the object keys has the correct type.
 // Otherwise it will return false.
-
-/* old isPokemon function
-
-function isPokemon(item){
-	let correctObjectKeys = ["name","height","types"];
-	let correctObjectKeysTypes = ["string","number","object"]
-	if(typeof item !== "object")
-		return false;
-	else if (Object.keys(item).toString()!=="name,height,types")
-		return false;
-	Object.keys(item).forEach(function (objectKey,index) {
-		if(objectKey !== correctObjectKeys[index])
-			return false;
-		else if (item[objectKey]!==correctObjectKeysTypes[index])
-			return false;
-	})
-	return true;
-}*/
 
 function isPokemon(item){
 	let correctObjectKeys = ["name","detailsUrl"];
