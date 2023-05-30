@@ -23,7 +23,7 @@ let pokemonModal = (function() {
 		titleElement.innerText = pokemonName;
   
 		let contentElement = document.createElement('p');
-		contentElement.innerText = "Height: " + pokemonHeight + " Types: " + pokemonTypes ;
+		contentElement.innerText = "Height: " + pokemonHeight/10 + "m" + " Types: " + TypesToString(pokemonTypes);
 	 
 		modal.appendChild(closeButtonElement);
 		modal.appendChild(pictureElement);
@@ -46,7 +46,19 @@ let pokemonModal = (function() {
 	function hideModal() {
 		let modalContainer = document.querySelector('#modal-container');
 		modalContainer.classList.remove('is-visible');
-	 }
+	}
+
+	function TypesToString(pokemonTypes){
+		let displayedString = "";
+
+		pokemonTypes.forEach(function(types,index){
+			if(index != 0)
+				displayedString = displayedString.concat(", ");	
+			displayedString = displayedString.concat(types.type.name);
+		})
+		
+		return displayedString;
+	}
 
 	window.addEventListener('keydown', (e) => {
 		let modalContainer = document.querySelector('#modal-container');
