@@ -29,7 +29,7 @@ let pokemonModal = (function() {
 		//creating the modal content. Displayed attributes: pokemon height and its types. pokemon types are being converted from an object array
 		//to a formatted text by the function TypesToString 
 		let contentElement = document.createElement('p');
-		contentElement.innerText = "Height: " + pokemonHeight/10 + "m" + "\n" + " Types: " + TypesToString(pokemonTypes);
+		contentElement.innerText = "Height: " + pokemonHeight/10 + " m" + "\n" + " Types: " + TypesToString(pokemonTypes);
 		
 		//new html elements are appended to thei parent elements
 		modal.appendChild(closeButtonElement);
