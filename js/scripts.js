@@ -112,7 +112,7 @@ function findPokemonByName(pokemonName){
 function addListItem(pokemon) {
 	let ListElement = document.createElement('li');						//create a new list element
 	let pokemonButton = document.createElement('button');				//create a new pokemon button
-	pokemonButton.classList.add('pokemonButton');						//add pokemonButton class to the button
+	pokemonButton.classList.add('btn','btn-light','m-1');				//add pokemonButton class to the button
 	pokemonButton.setAttribute("data-toggle","modal");					//set data-toggle attribute to modal
 	pokemonButton.setAttribute("data-target","#exampleModal");		//set data-target attribute to exampleModal
 	addPokemonButtonEvent(pokemonButton,pokemon);						//adds a click event to the pokemon button
@@ -130,7 +130,7 @@ function showDetails(pokemon){
 		console.log(pokemon.imageUrl);*/
 		//pokemonModal.showModal(pokemon.name,pokemon.height,pokemon.types,pokemon.imageUrl);
 		let modalHeader = document.querySelector(".modal-title");
-		modalHeader.innerText = pokemon.name;
+		modalHeader.innerText = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);;
 	})
 }
 //shows details (through an event listener) when pokemon button is pressed
