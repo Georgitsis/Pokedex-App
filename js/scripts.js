@@ -1,5 +1,5 @@
 //Modal
-let pokemonModal = (function() {
+/*let pokemonModal = (function() {
 
 //expects pokemonName, pokemonHeight, pokemonTypes,imageSourceUrl as paramters to display the modal correctly
 
@@ -81,7 +81,7 @@ let pokemonModal = (function() {
 		showModal : showModal,
 		hideModal : hideModal
 	}
-})();
+})();*/
 
 //Nesting PokemonList in a IIFE
 
