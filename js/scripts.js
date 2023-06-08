@@ -1,7 +1,7 @@
 //Modal
 /*let pokemonModal = (function() {
 
-//expects pokemonName, pokemonHeight, pokemonTypes,imageSourceUrl as paramters to display the modal correctly
+//expects pokemonName, pokemonHeight, pokemonTypes,imageSourceUrl as parameters to display the modal correctly
 
 	function showModal(pokemonName, pokemonHeight, pokemonTypes,imageSourceUrl) {
 		let modalContainer = document.querySelector('#modal-container');
@@ -31,7 +31,7 @@
 		let contentElement = document.createElement('p');
 		contentElement.innerText = "Height: " + pokemonHeight/10 + " m" + "\n" + " Types: " + TypesToString(pokemonTypes);
 		
-		//new html elements are appended to thei parent elements
+		//new html elements are appended to their parent elements
 		modal.appendChild(closeButtonElement);
 		modal.appendChild(pictureElement);
 		modal.appendChild(titleElement);
@@ -113,6 +113,8 @@ function addListItem(pokemon) {
 	let ListElement = document.createElement('li');						//create a new list element
 	let pokemonButton = document.createElement('button');				//create a new pokemon button
 	pokemonButton.classList.add('pokemonButton');						//add pokemonButton class to the button
+	pokemonButton.setAttribute("data-toggle","modal");					//set data-toggle attribute to modal
+	pokemonButton.setAttribute("data-target","#exampleModal");		//set data-target attribute to exampleModal
 	addPokemonButtonEvent(pokemonButton,pokemon);						//adds a click event to the pokemon button
 	pokemonButton.innerText = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);	//Set inner text of button to the pokemon name, capitalize first letter
 	let pokemonList = document.querySelector("ul.pokemon-list");	//Select the ul element with pokemon-list class
@@ -126,7 +128,9 @@ function showDetails(pokemon){
 		/*console.log(pokemon.name);
 		console.log(pokemon.height);
 		console.log(pokemon.imageUrl);*/
-		pokemonModal.showModal(pokemon.name,pokemon.height,pokemon.types,pokemon.imageUrl);
+		//pokemonModal.showModal(pokemon.name,pokemon.height,pokemon.types,pokemon.imageUrl);
+		let modalHeader = document.querySelector(".modal-title");
+		modalHeader.innerText = pokemon.name;
 	})
 }
 //shows details (through an event listener) when pokemon button is pressed
