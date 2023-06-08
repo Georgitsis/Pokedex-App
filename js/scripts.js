@@ -125,12 +125,21 @@ function addListItem(pokemon) {
 /*gives out an alert with pokemon name and size */
 function showDetails(pokemon){
 	loadDetails(pokemon).then(function(){
-		/*console.log(pokemon.name);
-		console.log(pokemon.height);
-		console.log(pokemon.imageUrl);*/
-		//pokemonModal.showModal(pokemon.name,pokemon.height,pokemon.types,pokemon.imageUrl);
+
+		//setting value for modal header to pokemon name with capital first letter
 		let modalHeader = document.querySelector(".modal-title");
-		modalHeader.innerText = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);;
+		modalHeader.innerText = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
+		
+		//naming modal body
+		let modalBody = document.querySelector(".modal-body");
+		
+		//
+		let modalImg = document.querySelector(".modal-image");
+		modalImg.setAttribute("src",pokemon.imageUrl)
+		//modalBody.appendChild(modalImg);
+
+		
+
 	})
 }
 //shows details (through an event listener) when pokemon button is pressed
