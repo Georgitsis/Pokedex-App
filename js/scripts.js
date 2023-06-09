@@ -130,16 +130,39 @@ function showDetails(pokemon){
 		let modalHeader = document.querySelector(".modal-title");
 		modalHeader.innerText = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
 		
-		//naming modal body
-		let modalBody = document.querySelector(".modal-body");
 		
-		//
-		let modalImg = document.querySelector(".modal-image");
-		modalImg.setAttribute("src",pokemon.imageUrl)
-		//modalBody.appendChild(modalImg);
-
+		let modalBody = document.querySelector(".modal-body");	//naming modal body
+		modalBody.innerText ="";
 		
+		//Modal image
+		let modalImg = document.createElement("img");				//creating and naming modal image
+		modalImg.setAttribute("src",pokemon.imageUrl);				//Setting the src attribute of modal image
+		modalImg.classList.add("float-left");							//adding styling classes to modal image
+		modalBody.appendChild(modalImg);									//appending modal image to modal body
 
+		//Modal Pokemon details list
+		let modalDetails = document.createElement("ul");			//creating and naming ul element
+		modalDetails.classList.add("modal-pokemon-details");		//Adding class to ul element for stylings
+		modalBody.appendChild(modalDetails);							//appending list to modal body
+
+		//Modal Pokemon Details list elements
+		let modalListElement = document.createElement("li");	
+		modalListElement.innerText = "Height: " + pokemon.height/10 + " m";
+		modalDetails.appendChild(modalListElement);
+		
+		modalListElement = document.createElement("li");
+		modalListElement.classList.add("list-group-item");
+
+		pokemon.types.forEach(function(types,index){
+			if(index != 0)
+				modalListElement.innerText = modalListElement.innerText.concat(", ");
+			else if(index == 0)
+				modalListElement.innerText = "Types: ";
+			modalListElement.innerText = modalListElement.innerText.concat(types.type.name);
+		})
+
+		modalDetails.appendChild(modalListElement);
+		
 	})
 }
 //shows details (through an event listener) when pokemon button is pressed
