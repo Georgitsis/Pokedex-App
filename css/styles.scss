@@ -1,12 +1,14 @@
-$BackgroundColor: #FFCC00;
-$SecondaryBackgroundColor: #D5A100;
+$PrimaryColorBright: #FFCC00;
+$PrimaryColorDark: #D5A100;
+$SecondaryColorBright: #0075BE;
+$SecondaryColorDark: #0A285F;
 
 body {
-   background-color: $BackgroundColor;   
+   background-color: $PrimaryColorBright;   
 }
 
 main {
-   background-color: $BackgroundColor;
+   background-color: $PrimaryColorBright;
 }
 
 h1 {
@@ -16,6 +18,10 @@ h1 {
 .page-logo{
    max-width: 400px;
    text-align: center;
+}
+
+.pokemon-list-item {
+   background-color: $PrimaryColorDark;
 }
 
 
