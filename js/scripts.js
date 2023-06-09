@@ -111,10 +111,11 @@ function findPokemonByName(pokemonName){
 /* Expects a pokemon object as parameter. Will create a list item for the pokemon */
 function addListItem(pokemon) {
 	let ListElement = document.createElement('li');						//create a new list element
-	ListElement.classList.add('pokemon-list-item','list-group-item','col','col-xs-12',
-	'col-sm-6','col-md-4','col-lg-3');
+	ListElement.classList.add('pokemon-list-item',
+	'list-group-item','col-12','col-sm-6','col-md-4',
+	'col-lg-3','col-xl-2');
 	let pokemonButton = document.createElement('button');				//create a new pokemon button
-	pokemonButton.classList.add('btn-block','btn-light','m-1');				//add pokemonButton class to the button
+	pokemonButton.classList.add('btn-block','pokemon-button');				//add pokemonButton classes 
 	pokemonButton.setAttribute("data-toggle","modal");					//set data-toggle attribute to modal
 	pokemonButton.setAttribute("data-target","#exampleModal");		//set data-target attribute to exampleModal
 	addPokemonButtonEvent(pokemonButton,pokemon);						//adds a click event to the pokemon button

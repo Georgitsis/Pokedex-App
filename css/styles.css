@@ -1,9 +1,21 @@
 body {
   background-color: #FFCC00;
+  text-align: center;
 }
 
-main {
-  background-color: #FFCC00;
+.navbar {
+  background-color: #0075BE;
+  color: #FFCC00;
+}
+
+a {
+  color: #FFCC00;
+}
+a:hover {
+  color: #ffe680;
+}
+a:active {
+  opacity: 0.8;
 }
 
 h1 {
@@ -17,6 +29,21 @@ h1 {
 
 .pokemon-list-item {
   background-color: #D5A100;
+  border: 1px solid #0A285F;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+.row {
+  padding-left: 0;
+  justify-content: stretch;
+  white-space: nowrap;
+}
+
+.pokemon-button {
+  border: 2px solid #0075BE;
+  color: #0A285F;
+  background-color: rgba(255, 243, 197, 0.8);
 }
 
 /*$bodyBackgroundColor: rgb(139, 209, 209);

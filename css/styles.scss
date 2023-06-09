@@ -3,12 +3,27 @@ $PrimaryColorDark: #D5A100;
 $SecondaryColorBright: #0075BE;
 $SecondaryColorDark: #0A285F;
 
+
+
 body {
-   background-color: $PrimaryColorBright;   
+   background-color: $PrimaryColorBright;
+   text-align: center;
 }
 
-main {
-   background-color: $PrimaryColorBright;
+.navbar {
+   background-color: $SecondaryColorBright;
+   color: $PrimaryColorBright;
+}
+
+a {
+   color: $PrimaryColorBright;
+
+   &:hover{
+      color: lighten($color: $PrimaryColorBright, $amount: 25%);
+   }
+   &:active{
+      opacity: 0.8;
+   }
 }
 
 h1 {
@@ -22,7 +37,23 @@ h1 {
 
 .pokemon-list-item {
    background-color: $PrimaryColorDark;
+   border: 1px solid $SecondaryColorDark;
+   border-radius: 5px;
+   margin: 5px;
 }
+
+.row{
+   padding-left: 0;
+   justify-content: stretch;
+   white-space: nowrap;
+}
+
+.pokemon-button {
+   border: 2px solid $SecondaryColorBright;
+   color: $SecondaryColorDark;
+   background-color: rgba(255, 243, 197, 0.8);
+}
+
 
 
 
