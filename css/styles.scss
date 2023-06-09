@@ -1,5 +1,13 @@
+$BackgroundColor: #FFCC00;
+$SecondaryBackgroundColor: #D5A100;
 
+body {
+   background-color: $BackgroundColor;   
+}
 
+main {
+   background-color: $BackgroundColor;
+}
 
 h1 {
    text-align: center;
