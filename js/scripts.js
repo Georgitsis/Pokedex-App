@@ -111,13 +111,16 @@ function findPokemonByName(pokemonName){
 /* Expects a pokemon object as parameter. Will create a list item for the pokemon */
 function addListItem(pokemon) {
 	let ListElement = document.createElement('li');						//create a new list element
+	ListElement.classList.add('list-group-item','col','col-xs-12',
+	'col-sm-6','col-md-4','col-lg-3');
 	let pokemonButton = document.createElement('button');				//create a new pokemon button
-	pokemonButton.classList.add('btn','btn-light','m-1');				//add pokemonButton class to the button
+	pokemonButton.classList.add('btn-block','btn-light','m-1');				//add pokemonButton class to the button
 	pokemonButton.setAttribute("data-toggle","modal");					//set data-toggle attribute to modal
 	pokemonButton.setAttribute("data-target","#exampleModal");		//set data-target attribute to exampleModal
 	addPokemonButtonEvent(pokemonButton,pokemon);						//adds a click event to the pokemon button
 	pokemonButton.innerText = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);	//Set inner text of button to the pokemon name, capitalize first letter
 	let pokemonList = document.querySelector("ul.pokemon-list");	//Select the ul element with pokemon-list class
+	//let buttonGrid = document.querySelector(".button-grid");
 	pokemonList.appendChild(ListElement);									//add a list item to ul.pokemon.list
 	ListElement.appendChild(pokemonButton); 								//add a button to the list element
 }
@@ -142,7 +145,8 @@ function showDetails(pokemon){
 
 		//Modal Pokemon details list
 		let modalDetails = document.createElement("ul");			//creating and naming ul element
-		modalDetails.classList.add("modal-pokemon-details");		//Adding class to ul element for stylings
+		modalDetails.classList.add("modal-pokemon-details","list-unstyled");		//Adding class to ul element for stylings
+		
 		modalBody.appendChild(modalDetails);							//appending list to modal body
 
 		//Modal Pokemon Details list elements
@@ -151,8 +155,7 @@ function showDetails(pokemon){
 		modalDetails.appendChild(modalListElement);
 		
 		modalListElement = document.createElement("li");
-		modalListElement.classList.add("list-group-item");
-
+		
 		pokemon.types.forEach(function(types,index){
 			if(index != 0)
 				modalListElement.innerText = modalListElement.innerText.concat(", ");
