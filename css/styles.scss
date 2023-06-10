@@ -1,7 +1,8 @@
-$PrimaryColorBright: #FFCC00;
-$PrimaryColorDark: #D5A100;
-$SecondaryColorBright: #0075BE;
-$SecondaryColorDark: #0A285F;
+$PrimaryColorBright:       #FFCC00;
+$PrimaryColorDark:         #D5A100;
+$SecondaryColorBright:     #0075BE;
+$SecondaryColorDark:       #0A285F;
+$PokemonButtonBackground:  rgba(255, 244, 199, 0.8);
 
 
 
@@ -36,26 +37,67 @@ h1 {
 }
 
 .pokemon-list-item {
-   background-color: $PrimaryColorDark;
-   border: 1px solid $SecondaryColorDark;
+   background-color: $PrimaryColorBright;
+   border: none; //1px solid $SecondaryColorDark;
    border-radius: 5px;
    margin: 5px;
-}
-
-.row{
-   padding-left: 0;
-   justify-content: stretch;
-   white-space: nowrap;
+   padding: 0;
 }
 
 .pokemon-button {
-   border: 2px solid $SecondaryColorBright;
    color: $SecondaryColorDark;
-   background-color: rgba(255, 243, 197, 0.8);
+   background-color: $PokemonButtonBackground;
+   border: 4px solid $SecondaryColorBright;
+   border-radius: 5px ;
+
+   &:hover{
+      background-color: lighten($color: $PokemonButtonBackground, $amount: 8%);
+   }
+   &:active{
+     // opacity: 0.8;
+   }
 }
 
+//modal
 
+.modal-content {
+   background-color: $PrimaryColorBright;
+   border: 4px solid $SecondaryColorDark;
+   border-radius: 9px;
+   font-weight: bold;
+}
 
+.modal-header {
+   background-color: $SecondaryColorBright;
+   border-top-left-radius: 5px;
+   border-top-right-radius: 5px;
+   border-bottom-color: $SecondaryColorDark;
+   
+   .modal-title {
+      font-size: x-large;
+      font-weight: bold;
+      color: $PrimaryColorBright;
+   }
+}
+
+.modal-body {
+   border-bottom: 2px solid $SecondaryColorDark;
+   border-top: 2px solid $SecondaryColorDark;
+   color: $SecondaryColorDark;
+}
+
+.modal-footer {
+   background-color: $SecondaryColorBright;
+   border-top-color: $SecondaryColorDark;
+}
+
+.modal-pokemon-details {
+   text-align: left;
+}
+
+/*.list-group-item {
+   background-color: $PrimaryColorBright;
+}
 
 
 

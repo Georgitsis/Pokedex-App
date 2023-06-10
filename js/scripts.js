@@ -146,7 +146,8 @@ function showDetails(pokemon){
 
 		//Modal Pokemon details list
 		let modalDetails = document.createElement("ul");			//creating and naming ul element
-		modalDetails.classList.add("modal-pokemon-details","list-unstyled");		//Adding class to ul element for stylings
+		modalDetails.classList.add("modal-pokemon-details",		//Adding class to ul element for stylings
+		"list-unstyled");		
 		
 		modalBody.appendChild(modalDetails);							//appending list to modal body
 
