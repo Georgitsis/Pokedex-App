@@ -27,6 +27,10 @@ h1 {
   text-align: center;
 }
 
+.pokemon-list {
+  padding: 0 40px;
+}
+
 .pokemon-list-item {
   background-color: #FFCC00;
   border: none;
@@ -76,6 +80,10 @@ h1 {
 
 .modal-pokemon-details {
   text-align: left;
+}
+
+span {
+  color: #0A285F;
 }
 
 /*.list-group-item {

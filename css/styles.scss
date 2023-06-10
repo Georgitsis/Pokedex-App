@@ -36,6 +36,12 @@ h1 {
    text-align: center;
 }
 
+
+.pokemon-list {
+   padding: 0 40px;
+}
+
+
 .pokemon-list-item {
    background-color: $PrimaryColorBright;
    border: none; //1px solid $SecondaryColorDark;
@@ -93,6 +99,10 @@ h1 {
 
 .modal-pokemon-details {
    text-align: left;
+}
+
+span {
+   color: $SecondaryColorDark;
 }
 
 /*.list-group-item {
