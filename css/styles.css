@@ -61,7 +61,7 @@ h1 {
   background-color: #0075BE;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  border-bottom-color: #0A285F;
+  border-bottom: 2px solid #0A285F;
 }
 .modal-header .modal-title {
   font-size: x-large;
@@ -77,13 +77,9 @@ h1 {
 
 .modal-footer {
   background-color: #0075BE;
-  border-top-color: #0A285F;
+  border-top: 2px solid #0A285F;
 }
 
 .modal-pokemon-details {
   text-align: left;
-}
-
-span {
-  color: #0A285F;
 }/*# sourceMappingURL=styles.css.map */

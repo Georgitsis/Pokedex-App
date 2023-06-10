@@ -66,7 +66,7 @@ h1 {
    }
 }
 
-//MODAL
+//MODAL stylings
 
 .modal-content {
    background-color: $PrimaryColorBright;
@@ -79,7 +79,7 @@ h1 {
    background-color: $SecondaryColorBright;
    border-top-left-radius: 5px;
    border-top-right-radius: 5px;
-   border-bottom-color: $SecondaryColorDark;
+   border-bottom: 2px solid $SecondaryColorDark;
    
    .modal-title {
       font-size: x-large;
@@ -96,13 +96,9 @@ h1 {
 
 .modal-footer {
    background-color: $SecondaryColorBright;
-   border-top-color: $SecondaryColorDark;
+   border-top: 2px solid $SecondaryColorDark;
 }
 
 .modal-pokemon-details {
    text-align: left;
-}
-
-span {
-   color: $SecondaryColorDark;
 }

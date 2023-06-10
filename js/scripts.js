@@ -152,7 +152,7 @@ function showDetails(pokemon){
 
 		//Modal Pokemon Details list elements
 		let modalListElement = document.createElement("li");	
-		modalListElement.innerText = "Height: " + pokemon.height/10 + " m";
+		modalListElement.innerText = "Height:\t\t\t" + pokemon.height/10 + " m";
 		modalDetails.appendChild(modalListElement);
 		
 		modalListElement = document.createElement("li");
