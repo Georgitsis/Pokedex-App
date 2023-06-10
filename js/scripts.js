@@ -112,8 +112,7 @@ function findPokemonByName(pokemonName){
 function addListItem(pokemon) {
 	let ListElement = document.createElement('li');						//create a new list element
 	ListElement.classList.add('pokemon-list-item',
-	'list-group-item','col-sm-6','col-md-4',
-	'col-lg-3','col-xl-2');
+	'col-12','col-sm-6','col-md-4','col-lg-3','list-group-item');
 	let pokemonButton = document.createElement('button');				//create a new pokemon button
 	pokemonButton.classList.add('btn-block','pokemon-button');				//add pokemonButton classes 
 	pokemonButton.setAttribute("data-toggle","modal");					//set data-toggle attribute to modal
