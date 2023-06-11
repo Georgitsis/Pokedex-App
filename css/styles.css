@@ -24,7 +24,7 @@ h1 {
 }
 
 .page-logo {
-  max-width: 400px;
+  max-width: 500px;
   text-align: center;
 }
 
@@ -51,7 +51,10 @@ h1 {
 .pokemon-button:hover {
   background-color: rgba(255, 252, 240, 0.8);
 }
+
 .modal-content {
+  height: 300px;
+  width: 500px;
   background-color: #FFCC00;
   border: 4px solid #0A285F;
   border-radius: 9px;

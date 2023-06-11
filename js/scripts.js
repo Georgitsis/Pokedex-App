@@ -1,93 +1,9 @@
-//Modal
-/*let pokemonModal = (function() {
-
-//expects pokemonName, pokemonHeight, pokemonTypes,imageSourceUrl as parameters to display the modal correctly
-
-	function showModal(pokemonName, pokemonHeight, pokemonTypes,imageSourceUrl) {
-		let modalContainer = document.querySelector('#modal-container');
-	 
-		// Clear all existing modal content
-		modalContainer.innerHTML = '';
-	 
-		let modal = document.createElement('div');
-		modal.classList.add('modal');
-	 
-		// Add the new modal content
-		let closeButtonElement = document.createElement('button');
-		closeButtonElement.classList.add('modal-close');
-		closeButtonElement.innerText = 'Close';
-		closeButtonElement.addEventListener('click', hideModal);
-		
-		//picture element created and source set
-		let pictureElement = document.createElement('img');
-		pictureElement.src = imageSourceUrl;
-
-		//creating the modal header, setting the displayed text and capitalizing the first letter
-		let titleElement = document.createElement('h1');
-		titleElement.innerText = pokemonName.charAt(0).toUpperCase() + pokemonName.slice(1); //...and capitalize first letter
-		
-		//creating the modal content. Displayed attributes: pokemon height and its types. pokemon types are being converted from an object array
-		//to a formatted text by the function TypesToString 
-		let contentElement = document.createElement('p');
-		contentElement.innerText = "Height: " + pokemonHeight/10 + " m" + "\n" + " Types: " + TypesToString(pokemonTypes);
-		
-		//new html elements are appended to their parent elements
-		modal.appendChild(closeButtonElement);
-		modal.appendChild(pictureElement);
-		modal.appendChild(titleElement);
-		modal.appendChild(contentElement);
-		modalContainer.appendChild(modal);
-		
-		//adding class "is-visible" to modal container
-		modalContainer.classList.add('is-visible');
-  
-		//if user clicks outside of modal close modal
-		modalContainer.addEventListener('click', (e) => {
-		  // Since this is also triggered when clicking INSIDE the modal
-		  // We only want to close if the user clicks directly on the overlay
-		  let target = e.target;
-		  if (target === modalContainer) {
-			 hideModal();
-		  }
-		});
-	}
-
-	//hides the modal by removing the is-visible class from modal container	
-	function hideModal() {
-		let modalContainer = document.querySelector('#modal-container');
-		modalContainer.classList.remove('is-visible');
-	}
-
-	function TypesToString(pokemonTypes){
-		let displayedString = "";
-
-		pokemonTypes.forEach(function(types,index){
-			if(index != 0)
-				displayedString = displayedString.concat(", ");	
-			displayedString = displayedString.concat(types.type.name);
-		})
-		
-		return displayedString;
-	}
-
-	window.addEventListener('keydown', (e) => {
-		let modalContainer = document.querySelector('#modal-container');
-		if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
-		  hideModal();  
-		}
-	});
-
-	return {
-		showModal : showModal,
-		hideModal : hideModal
-	}
-})();*/
 
 //Nesting PokemonList in a IIFE
 
 let pokemonRepository = (function () {
 	let pokemonList = [];
-	let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=150";
+	let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=1281";
 
 /* returns the entire pokemon list*/
 function getAll() {
@@ -114,7 +30,7 @@ function addListItem(pokemon) {
 	ListElement.classList.add('pokemon-list-item',
 	'col-12','col-sm-6','col-md-4','col-lg-3','list-group-item');
 	let pokemonButton = document.createElement('button');				//create a new pokemon button
-	pokemonButton.classList.add('btn-block','pokemon-button');				//add pokemonButton classes 
+	pokemonButton.classList.add('btn-block','pokemon-button');		//add pokemonButton classes 
 	pokemonButton.setAttribute("data-toggle","modal");					//set data-toggle attribute to modal
 	pokemonButton.setAttribute("data-target","#exampleModal");		//set data-target attribute to exampleModal
 	addPokemonButtonEvent(pokemonButton,pokemon);						//adds a click event to the pokemon button
@@ -128,23 +44,27 @@ function addListItem(pokemon) {
 //Sets the values that will be displayed in the modal
 function showDetails(pokemon){
 	loadDetails(pokemon).then(function(){
-		//naming modal elements for convenience
-		let modalHeader = document.querySelector(".modal-title");
-		let modalHeight = document.querySelector(".modal-height");			
-		let modalTypes = document.querySelector(".modal-types");
-		let modalImg = document.querySelector(".modal-image");
-		
-		//setting modalImg src attribute 
-		modalImg.setAttribute("src",pokemon.imageUrl);
 
-		//document.getElementById("image_X").style.display='none';  will not be displayed, maybe until new is finished loaded
-		
+//naming modal elements for convenience
+		let modalHeader = document.querySelector(".modal-title");
+		let modalHeight = document.querySelector(".modal-height");
+		let modalWeight = document.querySelector(".modal-weight");
+		let modalTypes = document.querySelector(".modal-types");
+		let modalAbilities = document.querySelector(".modal-abilities");
+		let modalImg =  document.querySelector(".modal-image");
+
+		//Setting src attribute
+		modalImg.setAttribute("src",pokemon.imageUrl);							
+				
 		//setting value for modal header
 		modalHeader.innerText = pokemon.name.charAt(0).toUpperCase() 		//Capitalizing 1st letter
 		+ pokemon.name.slice(1);
 
 		//Setting displayed height value 
 		modalHeight.innerText = pokemon.height/10 + " m";
+
+		//Setting displayed weight value
+		modalWeight.innerText = pokemon.weight/10 + " kg";
 				
 		//Setting displayed types 
 		let DisplayedPokemonTypes = "";	
@@ -153,7 +73,20 @@ function showDetails(pokemon){
 			DisplayedPokemonTypes = DisplayedPokemonTypes + ", ";				//set comma in front of 2nd,3rd,etc type  
 			DisplayedPokemonTypes = DisplayedPokemonTypes + types.type.name;//concat the new type
 		})
+		
 		modalTypes.innerText = DisplayedPokemonTypes;
+
+		//Setting displayed abilities
+		let displayedPokemonAbilities = "";	
+		pokemon.abilities.forEach(function(abilities,index){
+			if(index != 0)
+			displayedPokemonAbilities = displayedPokemonAbilities + ", ";				//set comma in front of 2nd,3rd,etc ability
+			displayedPokemonAbilities = displayedPokemonAbilities + abilities.ability.name;			//concat the new type
+		})
+		
+		modalAbilities.innerText = displayedPokemonAbilities;
+
+
 	})
 }
 //shows details (through an event listener) when pokemon button is pressed
@@ -189,7 +122,9 @@ function loadDetails(item) {
 	  // Now we add the details to the item
 	  item.imageUrl = details.sprites.front_default;
 	  item.height = details.height;
+	  item.weight = details.weight;
 	  item.types = details.types;
+	  item.abilities = details.abilities;
 	}).catch(function (e) {
 	  console.error(e);
 	});
@@ -206,9 +141,6 @@ function loadDetails(item) {
 		loadDetails : loadDetails
 	};
 })();
-  
-
-
 
 /**********************************************************************Function declarations*******************************************/
 
@@ -231,12 +163,6 @@ function isPokemon(item){
 	return true;
 }
 
-
-function writePokemonsOnDocument(listOfPokemon){
-	listOfPokemon.forEach(function(singlePokemon){
-		document.write(`${singlePokemon.name} is ${singlePokemon.height} m tall<br>`);
-	})
-}
 /************************************************************************************************************************************/
 
 pokemonRepository.loadList().then(function(){
