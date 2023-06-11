@@ -136,6 +136,8 @@ function showDetails(pokemon){
 		
 		//setting modalImg src attribute 
 		modalImg.setAttribute("src",pokemon.imageUrl);
+
+		//document.getElementById("image_X").style.display='none';  will not be displayed, maybe until new is finished loaded
 		
 		//setting value for modal header
 		modalHeader.innerText = pokemon.name.charAt(0).toUpperCase() 		//Capitalizing 1st letter
