@@ -8,13 +8,13 @@ body {
   color: #FFCC00;
 }
 
-a {
-  color: #FFCC00;
+.navbar-brand {
+  color: #edf9e8;
 }
-a:hover {
+.navbar-brand:hover {
   color: #ffe680;
 }
-a:active {
+.navbar-brand:active {
   opacity: 0.8;
 }
 

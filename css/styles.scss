@@ -16,8 +16,8 @@ body {
    color: $PrimaryColorBright;
 }
 
-a {
-   color: $PrimaryColorBright;
+.navbar-brand {
+   color: #edf9e8;
 
    &:hover{
       color: lighten($color: $PrimaryColorBright, $amount: 25%);
