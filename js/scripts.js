@@ -125,48 +125,33 @@ function addListItem(pokemon) {
 	ListElement.appendChild(pokemonButton); 								//add a button to the list element
 }
 
-/*gives out an alert with pokemon name and size */
+//Sets the values that will be displayed in the modal
 function showDetails(pokemon){
 	loadDetails(pokemon).then(function(){
-
-		//setting value for modal header to pokemon name with capital first letter
+		//naming modal elements for convenience
 		let modalHeader = document.querySelector(".modal-title");
-		modalHeader.innerText = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
+		let modalHeight = document.querySelector(".modal-height");			
+		let modalTypes = document.querySelector(".modal-types");
+		let modalImg = document.querySelector(".modal-image");
 		
+		//setting modalImg src attribute 
+		modalImg.setAttribute("src",pokemon.imageUrl);
 		
-		let modalBody = document.querySelector(".modal-body");	//naming modal body
-		modalBody.innerText ="";
-		
-		//Modal image
-		let modalImg = document.createElement("img");				//creating and naming modal image
-		modalImg.setAttribute("src",pokemon.imageUrl);				//Setting the src attribute of modal image
-		modalImg.classList.add("float-left");							//adding styling classes to modal image
-		modalBody.appendChild(modalImg);									//appending modal image to modal body
+		//setting value for modal header
+		modalHeader.innerText = pokemon.name.charAt(0).toUpperCase() 		//Capitalizing 1st letter
+		+ pokemon.name.slice(1);
 
-		//Modal Pokemon details list
-		let modalDetails = document.createElement("ul");			//creating and naming ul element
-		modalDetails.classList.add("modal-pokemon-details",		//Adding class to ul element for stylings
-		"list-unstyled");		
-		
-		modalBody.appendChild(modalDetails);							//appending list to modal body
-
-		//Modal Pokemon Details list elements
-		let modalListElement = document.createElement("li");	
-		modalListElement.innerText = "Height:\t\t\t" + pokemon.height/10 + " m";
-		modalDetails.appendChild(modalListElement);
-		
-		modalListElement = document.createElement("li");
-		
+		//Setting displayed height value 
+		modalHeight.innerText = pokemon.height/10 + " m";
+				
+		//Setting displayed types 
+		let DisplayedPokemonTypes = "";	
 		pokemon.types.forEach(function(types,index){
 			if(index != 0)
-				modalListElement.innerText = modalListElement.innerText.concat(", ");
-			else if(index == 0)
-				modalListElement.innerText = "Types: ";
-			modalListElement.innerText = modalListElement.innerText.concat(types.type.name);
+			DisplayedPokemonTypes = DisplayedPokemonTypes + ", ";				//set comma in front of 2nd,3rd,etc type  
+			DisplayedPokemonTypes = DisplayedPokemonTypes + types.type.name;//concat the new type
 		})
-
-		modalDetails.appendChild(modalListElement);
-		
+		modalTypes.innerText = DisplayedPokemonTypes;
 	})
 }
 //shows details (through an event listener) when pokemon button is pressed
@@ -193,7 +178,7 @@ function loadList() {
 	})
  }
 
-//loads a pokemon's details by using the url saved in the pokemon object 
+//loads a pokemon details by using the url saved in the pokemon object 
 function loadDetails(item) {
 	let url = item.detailsUrl;
 	return fetch(url).then(function (response) {
@@ -251,14 +236,6 @@ function writePokemonsOnDocument(listOfPokemon){
 	})
 }
 /************************************************************************************************************************************/
-
-/*pokemonRepository.add({ name: 'Bulbasaur', height: 0.7, types: ['grass', 'poison']});
-pokemonRepository.add({  name: 'Pikachu', height: 0.4, types: ['electric']});
-pokemonRepository.add({ name: 'Weedle', height: 0.3, types: ['bug', 'poison']});
-pokemonRepository.add({ name: 'Onix', height: 8.8, types: ['rock', 'ground']});
-pokemonRepository.add({ name: 'Drapion', height: 1.3, types: ['poison','dark']});
-pokemonRepository.add({ name: 'Weedle', height: 0.3, types: ['bug', 'poison']});
-//pokemonRepository.add({ engine:"electric", wheels : 4});												//object to test the isPokemon function*/
 
 pokemonRepository.loadList().then(function(){
 	pokemonRepository.getAll().forEach(function(pokemon){
