@@ -1,9 +1,7 @@
-
 //Nesting PokemonList in a IIFE
-
 let pokemonRepository = (function () {
 	let pokemonList = [];
-	let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=1281";
+	let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=1273";
 
 /* returns the entire pokemon list*/
 function getAll() {
@@ -12,10 +10,8 @@ function getAll() {
 
 /* If item is a valid pokemon object it will be added to the pokemon list*/
 function add(item) {
-	//if(isPokemon(item))
-	pokemonList.push(item);
-	//else
-	//	alert("Not a Pokemon");
+	if(isPokemon(item))
+		pokemonList.push(item);
 }
 
 /* expects a string as parameter and searches the pokemon list for an exact name match. Returns an array of objects if several matches */ 
@@ -32,7 +28,7 @@ function addListItem(pokemon) {
 	let pokemonButton = document.createElement('button');				//create a new pokemon button
 	pokemonButton.classList.add('btn-block','pokemon-button');		//add pokemonButton classes 
 	pokemonButton.setAttribute("data-toggle","modal");					//set data-toggle attribute to modal
-	pokemonButton.setAttribute("data-target","#exampleModal");		//set data-target attribute to exampleModal
+	pokemonButton.setAttribute("data-target","#pokemonModal");		//set data-target attribute to pokemonModal
 	addPokemonButtonEvent(pokemonButton,pokemon);						//adds a click event to the pokemon button
 	pokemonButton.innerText = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);	//Set inner text of button to the pokemon name, capitalize first letter
 	let pokemonList = document.querySelector("ul.pokemon-list");	//Select the ul element with pokemon-list class
@@ -83,7 +79,7 @@ function showDetails(pokemon){
 			displayedPokemonAbilities = displayedPokemonAbilities + ", ";				//set comma in front of 2nd,3rd,etc ability
 			displayedPokemonAbilities = displayedPokemonAbilities + abilities.ability.name;			//concat the new type
 		})
-		
+
 		modalAbilities.innerText = displayedPokemonAbilities;
 
 
@@ -149,10 +145,10 @@ function loadDetails(item) {
 
 function isPokemon(item){
 	let correctObjectKeys = ["name","detailsUrl"];
-	let correctObjectKeysTypes = ["string","string"]
+	let correctObjectKeysTypes = ["string","string"];
 	if(typeof item !== "object")
 		return false;
-	else if (Object.keys(item).toString()!=="name,url")
+	else if (Object.keys(item).toString()!=="name,detailsUrl")
 		return false;
 	Object.keys(item).forEach(function (objectKey,index) {
 		if(objectKey !== correctObjectKeys[index])
