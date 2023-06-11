@@ -16,6 +16,7 @@
   </head>
   <body>
     <header>
+      <!--Navigationbar-->
       <nav class="navbar">
         <a class="navbar-brand" href="index.html">
           <img src="img/pokeball.png" width="30" height="30" class="d-inline-block align-top brand-logo" alt="brand logo">
@@ -23,21 +24,29 @@
         </a>
       </nav>
     </header>
+    
     <main>
+      <!--page logo-->
       <h1><img class="page-logo" src="img/pokemon-logo-transparent.png" alt="page logo, which reads pokemon"></h1>
+      
+      <!--Bootstrap container DIV-->
       <div class ="container-fluid"></div>
+      
+      <!--POkemon list-->
       <ul class="pokemon-list row list-group list-group-horizontal list-unstyled"></ul>      
+      
+      <!--Modal-->
       <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel"></h5>
+              <h2 class="modal-title" id="exampleModalLabel"></h2>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span class ="modal-close-x" aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
-              <img class="modal-image float-left" src="#">
+              <img class="modal-image float-left" src="#" alt="Image of the Pokemon">
               <div class="container-fluid">
                 <div class ="row modal-height-row">
                   <div class="col-3 text-left">Height:</div>
