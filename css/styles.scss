@@ -67,7 +67,7 @@ h1 {
 //MODAL stylings
 
 .modal-content {
-   height: 300px;
+   min-height: 300px;
    width: 500px;
    background-color: $PrimaryColorBright;
    border: 4px solid $SecondaryColorDark;
