@@ -44,7 +44,7 @@ function addListItem(pokemon) {
 
 	pokemonButtonImg.setAttribute("src",pokemon.ButtonImgUrl);
 	
-	pokemonButtonImg.classList.add("pokemon-button-img");
+	pokemonButtonImg.classList.add("pokemon-button-img"/*,"float-left"*/);
 
 	pokemonButton.appendChild(pokemonButtonImg);
 	
