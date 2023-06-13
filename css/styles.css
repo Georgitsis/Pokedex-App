@@ -28,8 +28,7 @@ main {
   border-bottom: 2px solid #0075BE;
   padding: 25px;
 }
-
-.page-logo {
+.page-logo-wrapper .page-logo {
   max-width: 300px;
   text-align: center;
 }
@@ -39,7 +38,7 @@ main {
   border: none;
   border-radius: 5px;
   padding: 10px 10px;
-  height: 10vh;
+  height: 12.5vh;
 }
 
 .pokemon-button {
@@ -54,8 +53,11 @@ main {
   background-color: rgba(255, 252, 240, 0.8);
 }
 .pokemon-button:focus {
-  border: 6px solid #00568b;
+  border-color: #004b79;
   outline: none;
+}
+.pokemon-button .pokemon-button-img {
+  max-height: 100%;
 }
 
 .modal-content {
