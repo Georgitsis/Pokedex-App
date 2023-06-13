@@ -1,6 +1,10 @@
 body {
   background-color: #FFCC00;
-  text-align: center;
+}
+
+main {
+  background-color: #FFCC00;
+  margin: 0px 40px;
 }
 
 .navbar {
@@ -18,18 +22,17 @@ body {
   opacity: 0.8;
 }
 
-h1 {
+.page-logo-wrapper {
   text-align: center;
-  margin-bottom: 40px;
+  margin: 40px 0px;
+  border-top: 2px solid #0075BE;
+  border-bottom: 2px solid #0075BE;
+  padding: 25px;
 }
 
 .page-logo {
-  max-width: 500px;
+  max-width: 300px;
   text-align: center;
-}
-
-.pokemon-list {
-  padding: 0 40px;
 }
 
 .pokemon-list-item {

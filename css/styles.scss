@@ -8,7 +8,11 @@ $PokemonButtonBackground:  rgba(255, 244, 199, 0.8);
 
 body {
    background-color: $PrimaryColorBright;
-   text-align: center;
+}
+
+main {
+   background-color: $PrimaryColorBright;
+   margin: 0px 40px;
 }
 
 .navbar {
@@ -27,19 +31,22 @@ body {
    }
 }
 
-h1 {
+.page-logo-wrapper {
    text-align: center;
-   margin-bottom: 40px;
+   margin: 40px 0px;
+   border-top: 2px solid $SecondaryColorBright;
+   border-bottom: 2px solid $SecondaryColorBright;
+   padding: 25px;
 }
 
 .page-logo{
-   max-width: 500px;
+   max-width: 300px;
    text-align: center;
 }
 
 
 .pokemon-list {
-   padding: 0 40px;
+   
 }
 
 
