@@ -51,6 +51,10 @@ h1 {
 .pokemon-button:hover {
   background-color: rgba(255, 252, 240, 0.8);
 }
+.pokemon-button:focus {
+  border: 6px solid #00568b;
+  outline: none;
+}
 
 .modal-content {
   min-height: 300px;

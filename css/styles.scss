@@ -62,6 +62,12 @@ h1 {
    &:hover{
       background-color: lighten($color: $PokemonButtonBackground, $amount: 8%);
    }
+
+   &:focus{
+      border: 6px solid darken($color: $SecondaryColorBright, $amount: 10%);
+      outline: none;
+
+   }
 }
 
 //MODAL stylings
