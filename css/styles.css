@@ -84,6 +84,9 @@ main {
   border-top: 2px solid #0A285F;
   color: #0A285F;
 }
+.modal-body .modal-image {
+  max-width: 150px;
+}
 
 .modal-footer {
   background-color: #0075BE;

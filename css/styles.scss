@@ -104,6 +104,10 @@ main {
    border-bottom: 2px solid $SecondaryColorDark;
    border-top: 2px solid $SecondaryColorDark;
    color: $SecondaryColorDark;
+  
+   .modal-image {
+      max-width: 150px;
+   }
 }
 
 .modal-footer {

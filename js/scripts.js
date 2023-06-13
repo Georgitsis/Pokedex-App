@@ -19,18 +19,32 @@ function add(item) {
 // Expects a pokemon object as parameter. Will create a list item for the pokemon
 function addListItem(pokemon) {
 	let ListElement = document.createElement('li');						//create a new list element
+
 	ListElement.classList.add('pokemon-list-item',						//Adding necessary classes to the list element
 	'col-12','col-sm-6','col-md-4','col-lg-3','list-group-item');
+
 	let pokemonButton = document.createElement('button');				//create a new pokemon button
+	
 	pokemonButton.classList.add('btn-block','pokemon-button');		//add pokemonButton classes 
+	
 	pokemonButton.setAttribute("data-toggle","modal");					//set data-toggle attribute to modal
+	
 	pokemonButton.setAttribute("data-target","#pokemonModal");		//set data-target attribute to pokemonModal
+	
 	addPokemonButtonEvent(pokemonButton,pokemon);						//adds a click event to the pokemon button
-	pokemonButton.innerText = pokemon.name.charAt(0).toUpperCase()	//Set inner text of button to the pokemon name, capitalize first letter
-	 + pokemon.name.slice(1);	
-	let pokemonList = document.querySelector("ul.pokemon-list");	//Select the ul element with pokemon-list class
-	pokemonList.appendChild(ListElement);									//add a list item to ul.pokemon.list
-	ListElement.appendChild(pokemonButton); 								//add a button to the list element
+	
+	let PokemonButtonText = document.createTextNode(pokemon.name.charAt(0).toUpperCase()	//Set inner text of button to the pokemon name, capitalize first letter
+	+ pokemon.name.slice(1));
+	
+	pokemonButton.appendChild(PokemonButtonText);
+
+
+	
+	 let pokemonList = document.querySelector("ul.pokemon-list");	//Select the ul element with pokemon-list class
+	
+	 pokemonList.appendChild(ListElement);									//add a list item to ul.pokemon.list
+	
+	 ListElement.appendChild(pokemonButton); 								//add a button to the list element
 }
 
 //Sets the values that will be displayed in the modal
@@ -113,7 +127,7 @@ function loadDetails(item) {
 	  return response.json();
 	}).then(function (details) {
 	  // Now we add the details to the item
-	  item.imageUrl = details.sprites.front_default;
+	  item.imageUrl = details.sprites.other.dream_world.front_default; //replace with bigger better picture
 	  item.height = details.height;
 	  item.weight = details.weight;
 	  item.types = details.types;
