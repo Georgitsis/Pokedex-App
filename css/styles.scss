@@ -129,5 +129,14 @@ main {
          color: $SecondaryColorDark;
          background-color: $PrimaryColorBright;
          border: 2px solid $SecondaryColorDark;
-      }
+      
+         &:hover {
+            opacity: 0.85;
+         }
+
+         &:not(:disabled):not(.disabled):active {
+            opacity: 1;
+            background-color: lighten($color: $PrimaryColorBright, $amount: 20%);
+         }
+   }
 }

@@ -107,4 +107,11 @@ main {
   color: #0A285F;
   background-color: #FFCC00;
   border: 2px solid #0A285F;
+}
+.modal-content .modal-close-button:hover {
+  opacity: 0.85;
+}
+.modal-content .modal-close-button:not(:disabled):not(.disabled):active {
+  opacity: 1;
+  background-color: #ffe066;
 }/*# sourceMappingURL=styles.css.map */
