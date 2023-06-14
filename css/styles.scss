@@ -98,6 +98,12 @@ main {
          font-weight: bold;
          color: $PrimaryColorBright;
       }
+
+      .close {
+         color: $PrimaryColorBright;
+         text-shadow: 0 1px 0 $PrimaryColorDark;
+         opacity: 1;
+      }
 }
 
    .modal-body {
@@ -105,7 +111,7 @@ main {
       border-top: 2px solid $SecondaryColorDark;
       color: $SecondaryColorDark;      
       display: flex;
-      align-items: center;
+      align-items: top;
       //justify-content: center;
   
       .modal-image {
