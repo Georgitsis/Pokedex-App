@@ -1,7 +1,7 @@
 //Nesting PokemonList in a IIFE
 let pokemonRepository = (function () {
 	let pokemonList = [];
-	let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=1273";	//url of the pokemon API
+	let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=649";	//url of the pokemon API
 
 // returns the entire pokemon list
 function getAll() {

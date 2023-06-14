@@ -11,14 +11,13 @@ main {
   background-color: #0075BE;
   color: #FFCC00;
 }
-
-.navbar-brand {
+.navbar .navbar-brand {
   color: #edf9e8;
 }
-.navbar-brand:hover {
+.navbar .navbar-brand:hover {
   color: #ffe680;
 }
-.navbar-brand:active {
+.navbar .navbar-brand:active {
   opacity: 0.8;
 }
 
@@ -28,7 +27,7 @@ main {
   border-bottom: 2px solid #0075BE;
   padding: 25px;
 }
-.page-logo-wrapper .page-logo {
+.page-logo-wrapper img.page-logo {
   max-width: 300px;
   text-align: center;
 }
@@ -36,15 +35,13 @@ main {
 .pokemon-list-item {
   background-color: #FFCC00;
   border: none;
-  margin: 0;
   border-radius: 5px;
-  padding: 10px 10px;
+  padding: 10px;
 }
 
 .pokemon-button {
   color: #0A285F;
   font-weight: bold;
-  font-size: 1.5em;
   background-color: rgba(255, 244, 199, 0.8);
   border: 4px solid #0075BE;
   border-radius: 5px;
@@ -61,22 +58,10 @@ main {
   align-items: center;
   justify-content: center;
 }
-.button-row .button-img-col {
-  flex-shrink: 0;
-}
-.button-row .button-img-col .pokemon-button-img {
-  margin: 0 auto;
-}
-.button-row .pokemon-button-text {
-  padding: 0 auto;
+
+.pokemon-button-text {
   white-space: nowrap;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  flex-grow: 1;
-}
-.button-row .empty-button-div {
-  flex-shrink: 1;
+  font-size: x-large;
 }
 
 .modal-content {
@@ -87,33 +72,26 @@ main {
   border-radius: 9px;
   font-weight: bold;
 }
-
-.modal-header {
+.modal-content .modal-header {
   background-color: #0075BE;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   border-bottom: 2px solid #0A285F;
 }
-.modal-header .modal-title {
+.modal-content .modal-header .modal-title {
   font-size: x-large;
   font-weight: bold;
   color: #FFCC00;
 }
-
-.modal-body {
+.modal-content .modal-body {
   border-bottom: 2px solid #0A285F;
   border-top: 2px solid #0A285F;
   color: #0A285F;
 }
-.modal-body .modal-image {
+.modal-content .modal-body .modal-image {
   max-width: 150px;
 }
-
-.modal-footer {
+.modal-content .modal-footer {
   background-color: #0075BE;
   border-top: 2px solid #0A285F;
-}
-
-.modal-pokemon-details {
-  text-align: left;
 }/*# sourceMappingURL=styles.css.map */
