@@ -110,7 +110,7 @@ function showDetails(pokemon){
 		pokemon.types.forEach(function(types,index){
 			if(index != 0)
 			DisplayedPokemonTypes = DisplayedPokemonTypes + ", ";				//set comma in front of 2nd,3rd,etc type  
-			DisplayedPokemonTypes = DisplayedPokemonTypes + types.type.name;//concat the new type
+			DisplayedPokemonTypes = DisplayedPokemonTypes + capitalizeFirstChar(types.type.name);
 		})
 		
 		modalTypes.innerText = DisplayedPokemonTypes;
@@ -120,7 +120,7 @@ function showDetails(pokemon){
 		pokemon.abilities.forEach(function(abilities,index){
 			if(index != 0)
 			displayedPokemonAbilities = displayedPokemonAbilities + ", ";				//set comma in front of 2nd,3rd,etc ability
-			displayedPokemonAbilities = displayedPokemonAbilities + abilities.ability.name;			//concat the new type
+			displayedPokemonAbilities = displayedPokemonAbilities + capitalizeFirstChar(abilities.ability.name);			//concat the new type
 		})
 
 		modalAbilities.innerText = displayedPokemonAbilities;
