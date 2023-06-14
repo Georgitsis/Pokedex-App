@@ -36,20 +36,18 @@ main {
 .pokemon-list-item {
   background-color: #FFCC00;
   border: none;
+  margin: 0;
   border-radius: 5px;
   padding: 10px 10px;
-  height: 12.5vh;
 }
 
 .pokemon-button {
   color: #0A285F;
   font-weight: bold;
   font-size: 1.5em;
-  text-align: center;
   background-color: rgba(255, 244, 199, 0.8);
   border: 4px solid #0075BE;
   border-radius: 5px;
-  height: 90%;
 }
 .pokemon-button:hover {
   background-color: rgba(255, 252, 240, 0.8);
@@ -58,8 +56,27 @@ main {
   border-color: #004b79;
   outline: none;
 }
-.pokemon-button .pokemon-button-img {
-  max-height: 100%;
+
+.button-row {
+  align-items: center;
+  justify-content: center;
+}
+.button-row .button-img-col {
+  flex-shrink: 0;
+}
+.button-row .button-img-col .pokemon-button-img {
+  margin: 0 auto;
+}
+.button-row .pokemon-button-text {
+  padding: 0 auto;
+  white-space: nowrap;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  flex-grow: 1;
+}
+.button-row .empty-button-div {
+  flex-shrink: 1;
 }
 
 .modal-content {

@@ -16,68 +16,51 @@ function add(item) {
 		console.log("One of the items was not a pokemon!");
 }
 
-// Expects pokemon object as parameter. Will create list item in which a pokemon button is appended, which will open up the modal for pokemon
+// Expects a pokemon object as parameter. Will create a list item for the pokemon
 function addListItem(pokemon) {
 
-//fetch url for small pokemon image, which is to be displayed on the pokemon button	
-	
-	fetch(pokemon.detailsUrl).then(function (response) {
-		return response.json();													
+	fetch(pokemon.detailsUrl).then(function (response) {		//fetch(apiUrl) passes on a list of pokemon to parameter "response" . For now it is an object response (an object)
+		return response.json();											//response.jason() returns a promise which passes the JSON object array as parameter(jason next line) to the next function
 	}).then(function (json){
 		pokemon.ButtonImgUrl = json.sprites.front_default;
 	
-//create list item and append to ul
+
+	let ListElement = document.createElement('li');						//create a new list element
+
+	ListElement.classList.add('pokemon-list-item',						//Adding necessary classes to the list element
+	'col-12','col-sm-6','col-md-4','col-lg-3','list-group-item');
+
+	let pokemonButton = document.createElement('button');				//create a new pokemon button
 	
-		let listElement = document.createElement('li');
-		listElement.classList.add('pokemon-list-item','col-12','col-sm-6','col-md-4','col-lg-3','list-group-item');
-		document.querySelector("ul.pokemon-list").appendChild(listElement);
+	pokemonButton.classList.add('btn-block','pokemon-button');		//add pokemonButton classes 
+	
+	pokemonButton.setAttribute("data-toggle","modal");					//set data-toggle attribute to modal
+	
+	pokemonButton.setAttribute("data-target","#pokemonModal");		//set data-target attribute to pokemonModal
+	
+	addPokemonButtonEvent(pokemonButton,pokemon);						//adds a click event to the pokemon button
 
-//create pokemon button and append to ListElement
+	let pokemonButtonImg = document.createElement("img");
 
-		let pokemonButton = document.createElement('button');	
-		pokemonButton.classList.add('btn-block','pokemon-button');	
-		pokemonButton.setAttribute("data-toggle","modal");	
-		pokemonButton.setAttribute("data-target","#pokemonModal");	
-		addPokemonButtonEvent(pokemonButton,pokemon);
-		listElement.appendChild(pokemonButton);
+	pokemonButtonImg.setAttribute("src",pokemon.ButtonImgUrl);
+	
+	pokemonButtonImg.classList.add("pokemon-button-img","float-left");
 
-//create bootstrap container div and append to the pokemonButton
+	pokemonButton.appendChild(pokemonButtonImg);
+	
+	let pokemonButtonText = document.createElement("span");
+	pokemonButtonText.innerText = pokemon.name.charAt(0).toUpperCase()	//Set inner text of button to the pokemon name, capitalize first letter
+	+ pokemon.name.slice(1);
 
-		let buttonContainer = document.createElement("div");
-		buttonContainer.classList.add("container-fluid","button-container");
-		pokemonButton.appendChild(buttonContainer);
-
-//create bootstrap row div and append to buttonContainer
-
-		let buttonRow = document.createElement("div");
-		buttonRow.classList.add("row","button-row");
-		buttonContainer.appendChild(buttonRow);
-
-//create 3 bootstrap column div's (25%|50%|25%). First holds pokemonButtonImg. Middle one hold pokemon name. Right one for correct spacing
-
-		//first column
-		let buttonImgColumn = document.createElement("div");
-		buttonImgColumn.classList.add("col-3","button-img-col");
-		buttonRow.appendChild(buttonImgColumn);
-
-		//second column
-		let pokemonButtonText = document.createElement("div");
-		pokemonButtonText.classList.add("col-6","pokemon-button-text","align-middle");
-		pokemonButtonText.innerText = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
-		buttonRow.appendChild(pokemonButtonText);
-
-		//third column
-		let emptyButtonDiv = document.createElement("div");
-		emptyButtonDiv.classList.add("col-3","empty-button-div");
-		//emptyButtonDiv.innerText= "This is a test";
-		buttonRow.appendChild(emptyButtonDiv);
-
-//create image and append to buttonRow as 1/4 bootstrap column
-
-		let pokemonButtonImg = document.createElement("img");
-		pokemonButtonImg.setAttribute("src",pokemon.ButtonImgUrl);	
-		pokemonButtonImg.classList.add("pokemon-button-img","align-middle");
-		buttonImgColumn.appendChild(pokemonButtonImg);
+	pokemonButtonText.classList.add("pokemon-button-text");
+	
+	pokemonButton.appendChild(pokemonButtonText);
+	
+	let pokemonList = document.querySelector("ul.pokemon-list");	//Select the ul element with pokemon-list class
+	
+	pokemonList.appendChild(ListElement);									//add a list item to ul.pokemon.list
+	
+	ListElement.appendChild(pokemonButton); 								//add a button to the list element
 	})
 }
 
