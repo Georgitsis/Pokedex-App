@@ -123,4 +123,11 @@ main {
       background-color: $SecondaryColorBright;
       border-top: 2px solid $SecondaryColorDark;
    }
+      
+      .modal-close-button {
+         font-weight: bold;
+         color: $SecondaryColorDark;
+         background-color: $PrimaryColorBright;
+         border: 2px solid $SecondaryColorDark;
+      }
 }
