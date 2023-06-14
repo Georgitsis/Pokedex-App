@@ -103,7 +103,10 @@ main {
    .modal-body {
       border-bottom: 2px solid $SecondaryColorDark;
       border-top: 2px solid $SecondaryColorDark;
-      color: $SecondaryColorDark;
+      color: $SecondaryColorDark;      
+      display: flex;
+      align-items: center;
+      //justify-content: center;
   
       .modal-image {
          max-width: 150px;
