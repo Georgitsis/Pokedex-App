@@ -63,7 +63,7 @@ function addListItem(pokemon) {
 		//second column
 		let pokemonButtonText = document.createElement("div");
 		pokemonButtonText.classList.add("col-6","pokemon-button-text","align-middle");
-		pokemonButtonText.innerText = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
+		pokemonButtonText.innerText = capitalizeFirstChar(pokemon.name)
 		buttonRow.appendChild(pokemonButtonText);
 
 		//third column
@@ -97,8 +97,7 @@ function showDetails(pokemon){
 		modalImg.setAttribute("src",pokemon.imageUrl);							
 				
 		//setting value for modal header
-		modalHeader.innerText = pokemon.name.charAt(0).toUpperCase() 		//Capitalizing 1st letter
-		+ pokemon.name.slice(1);
+		modalHeader.innerText = capitalizeFirstChar(pokemon.name);
 
 		//Setting displayed height value 
 		modalHeight.innerText = pokemon.height/10 + " m";
@@ -202,6 +201,12 @@ function isPokemon(item){
 			return false;
 	})
 	return true;
+}
+
+//Capitalizes first letter of a string
+
+function capitalizeFirstChar(myString){
+	return myString.charAt(0).toUpperCase() + myString.slice(1);
 }
 
 /************************************************************************************************************************************/
