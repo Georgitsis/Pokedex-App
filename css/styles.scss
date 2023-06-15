@@ -58,11 +58,10 @@ main {
    border-radius: 5px ;
 
       &:hover{
-         background-color: lighten($color: $PokemonButtonBackground, $amount: 8%);
+         background-color: lighten($color: $SecondaryColorBright, $amount: 8%);
       }
 
       &:focus{
-         //border-color: darken($color: $SecondaryColorBright, $amount: 13.5%);
          outline: $SecondaryColorBright dotted 4px;
       }
    }
@@ -139,4 +138,8 @@ main {
             background-color: lighten($color: $PrimaryColorBright, $amount: 20%);
          }
    }
+}
+
+.green {
+   display: none;
 }

@@ -47,7 +47,7 @@ main {
   border-radius: 5px;
 }
 .pokemon-button:hover {
-  background-color: rgba(255, 252, 240, 0.8);
+  background-color: #008ee7;
 }
 .pokemon-button:focus {
   outline: #0075BE dotted 4px;
@@ -113,4 +113,8 @@ main {
 .modal-content .modal-close-button:not(:disabled):not(.disabled):active {
   opacity: 1;
   background-color: #ffe066;
+}
+
+.green {
+  display: none;
 }/*# sourceMappingURL=styles.css.map */

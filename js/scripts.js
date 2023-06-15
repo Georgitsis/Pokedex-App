@@ -1,7 +1,7 @@
 //Nesting PokemonList in a IIFE
 let pokemonRepository = (function () {
 	let pokemonList = [];
-	let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=649";	//url of the pokemon API
+	let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=500";	//url of the pokemon API
 
 // returns the entire pokemon list
 function getAll() {
@@ -29,11 +29,10 @@ const addListItem = (pokemon) => {
 //create list item and append to ul
 	
 		let listElement = document.createElement('li');
-		listElement.classList.add("pokemon-list-item",'col-12','col-sm-6','col-md-4','col-lg-3','list-group-item',"d-none");
-		//listElement = document.querySelector(".pokemon-list-item")
-		listElement.classList.remove("d-none");
+		listElement.classList.add("pokemon-list-item",'col-12','col-sm-6','col-md-4','col-lg-3','list-group-item');
 		document.querySelector("ul.pokemon-list").appendChild(listElement);
-
+		//listElement.classList.add("green");
+		//listElement.classList.remove("green");
 //create pokemon button and append to ListElement
 
 		let pokemonButton = document.createElement('button');	
@@ -126,16 +125,15 @@ function showDetails(pokemon){
 		})
 
 		modalAbilities.innerText = displayedPokemonAbilities;
-
-
 	})
 }
 //shows details (through an event listener) when pokemon button is pressed
-function addPokemonButtonEvent(button, pokemon){
+function addPokemonButtonEvent(button,pokemon){
 	button.addEventListener("click", function () {
 		showDetails(pokemon);
-	})
-}
+		})
+	}
+
 
 //fetches list from API and add pokemon to pokemonList[]
 function loadList() {
@@ -172,9 +170,9 @@ function loadDetails(item) {
 	});
  }
 
- function showList() {
+ /*function showList() {
 	document.querySelector(".pokemon-list-item").classList.remove("d-none");
- }
+ }*/
 
 	return {
 	  	add : add,
@@ -183,8 +181,8 @@ function loadDetails(item) {
 	  	showDetails : showDetails,
 	  	addPokemonButtonEvent : addPokemonButtonEvent,
 	  	loadList : loadList,
-		loadDetails : loadDetails,
-		showList : showList
+		loadDetails : loadDetails//,
+		//showList : showList
 	};
 })();
 
@@ -222,7 +220,5 @@ pokemonRepository.loadList().then(function(){
 	pokemonRepository.getAll().forEach(function(pokemon){
 		pokemonRepository.addListItem(pokemon);
 	})
-}).then(function(){
-	pokemonRepository.showList();
-});
+})
 
