@@ -17,7 +17,7 @@ function add(item) {
 }
 
 // Expects pokemon object as parameter. Will create list item in which a pokemon button is appended, which will open up the modal for pokemon
-function addListItem(pokemon) {
+const addListItem = (pokemon) => {
 
 //fetch url for small pokemon image, which is to be displayed on the pokemon button	
 	
@@ -29,7 +29,9 @@ function addListItem(pokemon) {
 //create list item and append to ul
 	
 		let listElement = document.createElement('li');
-		listElement.classList.add('pokemon-list-item','col-12','col-sm-6','col-md-4','col-lg-3','list-group-item');
+		listElement.classList.add("pokemon-list-item",'col-12','col-sm-6','col-md-4','col-lg-3','list-group-item',"d-none");
+		//listElement = document.querySelector(".pokemon-list-item")
+		listElement.classList.remove("d-none");
 		document.querySelector("ul.pokemon-list").appendChild(listElement);
 
 //create pokemon button and append to ListElement
@@ -170,6 +172,10 @@ function loadDetails(item) {
 	});
  }
 
+ function showList() {
+	document.querySelector(".pokemon-list-item").classList.remove("d-none");
+ }
+
 	return {
 	  	add : add,
 	  	getAll : getAll,
@@ -177,7 +183,8 @@ function loadDetails(item) {
 	  	showDetails : showDetails,
 	  	addPokemonButtonEvent : addPokemonButtonEvent,
 	  	loadList : loadList,
-		loadDetails : loadDetails
+		loadDetails : loadDetails,
+		showList : showList
 	};
 })();
 
@@ -215,5 +222,7 @@ pokemonRepository.loadList().then(function(){
 	pokemonRepository.getAll().forEach(function(pokemon){
 		pokemonRepository.addListItem(pokemon);
 	})
-})
+}).then(function(){
+	pokemonRepository.showList();
+});
 
