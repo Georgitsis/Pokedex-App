@@ -40,10 +40,10 @@ main {
 }
 
 .pokemon-button {
-  color: #0A285F;
+  color: #FFCC00;
   font-weight: bold;
-  background-color: rgba(255, 244, 199, 0.8);
-  border: 4px solid #0075BE;
+  background-color: #0075BE;
+  border: 4px solid #0A285F;
   border-radius: 5px;
 }
 .pokemon-button:hover {
@@ -106,7 +106,7 @@ main {
   font-weight: bold;
   color: #0A285F;
   background-color: #FFCC00;
-  border: 2px solid #0A285F;
+  border: 3px solid #0A285F;
 }
 .modal-content .modal-close-button:hover {
   opacity: 0.85;
