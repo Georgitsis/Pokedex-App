@@ -62,8 +62,8 @@ main {
       }
 
       &:focus{
-         border-color: darken($color: $SecondaryColorBright, $amount: 13.5%);
-         outline: none;
+         //border-color: darken($color: $SecondaryColorBright, $amount: 13.5%);
+         outline: $SecondaryColorBright dotted 4px;
       }
    }
 
