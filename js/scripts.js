@@ -31,8 +31,6 @@ const addListItem = (pokemon) => {
 		let listElement = document.createElement('li');
 		listElement.classList.add("pokemon-list-item",'col-12','col-sm-6','col-md-4','col-lg-3','list-group-item');
 		document.querySelector("ul.pokemon-list").appendChild(listElement);
-		//listElement.classList.add("green");
-		//listElement.classList.remove("green");
 //create pokemon button and append to ListElement
 
 		let pokemonButton = document.createElement('button');	
@@ -54,7 +52,8 @@ const addListItem = (pokemon) => {
 		buttonRow.classList.add("row","button-row");
 		buttonContainer.appendChild(buttonRow);
 
-//create 3 bootstrap column div's (25%|50%|25%). First holds pokemonButtonImg. Middle one hold pokemon name. Right one for correct spacing
+//create 3 bootstrap column div's (25%|50%|25%). First holds pokemonButtonImg. Middle holds pokemon name. 
+//Right one for correct centering of pokemon name on button
 
 		//first column
 		let buttonImgColumn = document.createElement("div");
@@ -70,7 +69,6 @@ const addListItem = (pokemon) => {
 		//third column
 		let emptyButtonDiv = document.createElement("div");
 		emptyButtonDiv.classList.add("col-3","empty-button-div");
-		//emptyButtonDiv.innerText= "This is a test";
 		buttonRow.appendChild(emptyButtonDiv);
 
 //create image and append to buttonRow as 1/4 bootstrap column
