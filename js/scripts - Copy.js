@@ -30,8 +30,9 @@ const addListItem = (pokemon) => {
 	
 		let listElement = document.createElement('li');
 		listElement.classList.add("pokemon-list-item",'col-12','col-sm-6','col-md-4','col-lg-3','list-group-item');
-		listElement.setAttribute("id",pokemon.name);
 		document.querySelector("ul.pokemon-list").appendChild(listElement);
+		//listElement.classList.add("green");
+		//listElement.classList.remove("green");
 //create pokemon button and append to ListElement
 
 		let pokemonButton = document.createElement('button');	
@@ -53,8 +54,7 @@ const addListItem = (pokemon) => {
 		buttonRow.classList.add("row","button-row");
 		buttonContainer.appendChild(buttonRow);
 
-//create 3 bootstrap column div's (25%|50%|25%). First holds pokemonButtonImg. Middle holds pokemon name. 
-//Right one for correct centering of pokemon name on button
+//create 3 bootstrap column div's (25%|50%|25%). First holds pokemonButtonImg. Middle one hold pokemon name. Right one for correct spacing
 
 		//first column
 		let buttonImgColumn = document.createElement("div");
@@ -70,6 +70,7 @@ const addListItem = (pokemon) => {
 		//third column
 		let emptyButtonDiv = document.createElement("div");
 		emptyButtonDiv.classList.add("col-3","empty-button-div");
+		//emptyButtonDiv.innerText= "This is a test";
 		buttonRow.appendChild(emptyButtonDiv);
 
 //create image and append to buttonRow as 1/4 bootstrap column
@@ -133,6 +134,7 @@ function addPokemonButtonEvent(button,pokemon){
 		})
 	}
 
+
 //fetches list from API and add pokemon to pokemonList[]
 function loadList() {
 	return fetch(apiUrl).then(function (response) {		//fetch(apiUrl) passes on a list of pokemon to parameter "response" . For now it is an object response (an object)
@@ -158,7 +160,7 @@ function loadDetails(item) {
 	  return response.json();
 	}).then(function (details) {
 	  // Now we add the details to the item
-	  item.imageUrl = details.sprites.other.dream_world.front_default;
+	  item.imageUrl = details.sprites.other.dream_world.front_default; //replace with bigger better picture
 	  item.height = details.height;
 	  item.weight = details.weight;
 	  item.types = details.types;
@@ -168,20 +170,9 @@ function loadDetails(item) {
 	});
  }
 
- let searchInput = document.getElementById("pokemon-search");
- 
- searchInput.addEventListener("keyup",function(){
-//	document.getElementById("bulbasaur").classList.add("d-none");
-
-	document.querySelectorAll(".pokemon-list-item").forEach(function(item){
-		item.classList.add("d-none");
-		
-		if(item.id.startsWith(searchInput.value))
-			item.classList.remove("d-none");
-	})
-
- })
-
+ /*function showList() {
+	document.querySelector(".pokemon-list-item").classList.remove("d-none");
+ }*/
 
 	return {
 	  	add : add,
@@ -190,7 +181,8 @@ function loadDetails(item) {
 	  	showDetails : showDetails,
 	  	addPokemonButtonEvent : addPokemonButtonEvent,
 	  	loadList : loadList,
-		loadDetails : loadDetails
+		loadDetails : loadDetails//,
+		//showList : showList
 	};
 })();
 
