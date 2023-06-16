@@ -48,6 +48,7 @@ main {
 }
 .pokemon-button:hover {
   background-color: #0094f1;
+  border-color: #0f3b8d;
 }
 .pokemon-button:focus {
   outline: #0075BE dotted 4px;

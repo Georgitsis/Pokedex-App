@@ -59,6 +59,7 @@ main {
 
       &:hover{
          background-color: lighten($color: $SecondaryColorBright, $amount: 10%);
+         border-color: lighten($color: $SecondaryColorDark, $amount: 10%);
       }
 
       &:focus{
