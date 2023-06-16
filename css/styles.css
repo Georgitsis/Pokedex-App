@@ -47,7 +47,7 @@ main {
   border-radius: 5px;
 }
 .pokemon-button:hover {
-  background-color: #008ee7;
+  background-color: #0094f1;
 }
 .pokemon-button:focus {
   outline: #0075BE dotted 4px;
@@ -87,6 +87,12 @@ main {
   text-shadow: 0 1px 0 #D5A100;
   opacity: 1;
 }
+.modal-content .modal-header .close:hover {
+  color: #ffe680;
+}
+.modal-content .modal-header .close:not(:disabled):not(.disabled) {
+  opacity: 1;
+}
 .modal-content .modal-body {
   border-bottom: 2px solid #0A285F;
   border-top: 2px solid #0A285F;
@@ -108,9 +114,10 @@ main {
   border: 3px solid #0A285F;
 }
 .modal-content .modal-close-button:hover {
-  opacity: 0.85;
+  background-color: #ffe680;
+  border-color: #0f3b8d;
 }
 .modal-content .modal-close-button:not(:disabled):not(.disabled):active {
   opacity: 1;
-  background-color: #ffe066;
+  background-color: #ffe680;
 }/*# sourceMappingURL=styles.css.map */

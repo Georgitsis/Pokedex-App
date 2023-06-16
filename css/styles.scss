@@ -58,7 +58,7 @@ main {
    border-radius: 5px ;
 
       &:hover{
-         background-color: lighten($color: $SecondaryColorBright, $amount: 8%);
+         background-color: lighten($color: $SecondaryColorBright, $amount: 10%);
       }
 
       &:focus{
@@ -102,6 +102,14 @@ main {
          color: $PrimaryColorBright;
          text-shadow: 0 1px 0 $PrimaryColorDark;
          opacity: 1;
+         
+            &:hover {
+               color: lighten($color: $PrimaryColorBright, $amount: 25%);
+            }
+
+            &:not(:disabled):not(.disabled) {
+               opacity: 1;               
+            }
       }
 }
 
@@ -130,12 +138,13 @@ main {
          border: 3px solid $SecondaryColorDark;
       
          &:hover {
-            opacity: 0.85;
+            background-color: lighten($color: $PrimaryColorBright, $amount: 25%);
+            border-color: lighten($color: $SecondaryColorDark, $amount: 10%);
          }
 
          &:not(:disabled):not(.disabled):active {
             opacity: 1;
-            background-color: lighten($color: $PrimaryColorBright, $amount: 20%);
+            background-color: lighten($color: $PrimaryColorBright, $amount: 25%);
          }
    }
 }
