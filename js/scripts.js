@@ -176,7 +176,7 @@ function loadDetails(item) {
 	document.querySelectorAll(".pokemon-list-item").forEach(function(item){
 		item.classList.add("d-none");
 		
-		if(item.id.startsWith(searchInput.value))
+		if(item.id.startsWith(searchInput.value.toLowerCase()))
 			item.classList.remove("d-none");
 	})
 
