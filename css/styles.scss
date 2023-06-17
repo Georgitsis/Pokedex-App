@@ -129,11 +129,11 @@ main {
          color: $SecondaryColorDark;
          border: none;
          padding: 0;
+         margin-right: 6px;
          background-color: transparent;
          font-weight: bold;
          text-decoration:underline $SecondaryColorDark;
-         tex
-
+        
          &:active {
             outline: $SecondaryColorBright dotted 1px;
          }

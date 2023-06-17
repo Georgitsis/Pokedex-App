@@ -108,12 +108,13 @@ main {
   color: #0A285F;
   border: none;
   padding: 0;
+  margin-right: 6px;
   background-color: transparent;
   font-weight: bold;
   -webkit-text-decoration: underline #0A285F;
           text-decoration: underline #0A285F;
 }
-tex .modal-content .modal-body .modal-ability-button:active {
+.modal-content .modal-body .modal-ability-button:active {
   outline: #0075BE dotted 1px;
 }
 .modal-content .modal-body .modal-ability-button:focus {

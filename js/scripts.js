@@ -121,12 +121,12 @@ function showDetails(pokemon){
 		modalAbilities.innerText = "";
 
 		let abilityButton = [];//document.createElement("button");
-		let i= 0;
+		let i = 0;
 		pokemon.abilities.forEach((ability)=>{
 			abilityButton[i] = document.createElement("button");
 			abilityButton[i].setAttribute("id",`${ability.ability.name}-button`)
-			if(i!=0)
-				modalAbilities.innerHTML = modalAbilities.innerHTML + ", ";	
+			//if(i!=0)
+			//	modalAbilities.innerHTML = modalAbilities.innerHTML + ", ";	
 			abilityButton[i].classList.add("modal-ability-button");
 			abilityButton[i].innerText = capitalizeFirstChar(ability.ability.name);
 			abilityButtonEvent(abilityButton[i],ability.ability.name);
@@ -136,7 +136,7 @@ function showDetails(pokemon){
 			abilityDescription.setAttribute("id",`${ability.ability.name}-text`);
 			abilityDescription.innerText = ability.ability.name;
 			document.querySelector(".modal-abilities-description-row").appendChild(abilityDescription);
-
+			
 		})
 			//abilityButton.forEach(function(button){
 			//abilityButtonEvent(button);
