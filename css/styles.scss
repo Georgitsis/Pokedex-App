@@ -120,10 +120,27 @@ main {
       color: $SecondaryColorDark;      
       display: flex;
       align-items: top;
-      //justify-content: center;
   
       .modal-image {
          max-width: 150px;
+      }
+
+      .modal-ability-button {
+         color: $SecondaryColorDark;
+         border: none;
+         padding: 0;
+         background-color: transparent;
+         font-weight: bold;
+         text-decoration:underline $SecondaryColorDark;
+         tex
+
+         &:active {
+            outline: $SecondaryColorBright dotted 1px;
+         }
+
+         &:focus {
+            outline: $SecondaryColorBright dotted 1px;
+         }
       }
 }
 

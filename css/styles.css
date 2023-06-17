@@ -104,6 +104,21 @@ main {
 .modal-content .modal-body .modal-image {
   max-width: 150px;
 }
+.modal-content .modal-body .modal-ability-button {
+  color: #0A285F;
+  border: none;
+  padding: 0;
+  background-color: transparent;
+  font-weight: bold;
+  -webkit-text-decoration: underline #0A285F;
+          text-decoration: underline #0A285F;
+}
+tex .modal-content .modal-body .modal-ability-button:active {
+  outline: #0075BE dotted 1px;
+}
+.modal-content .modal-body .modal-ability-button:focus {
+  outline: #0075BE dotted 1px;
+}
 .modal-content .modal-footer {
   background-color: #0075BE;
   border-top: 2px solid #0A285F;
