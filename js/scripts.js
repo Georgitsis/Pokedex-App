@@ -1,7 +1,7 @@
 //Nesting PokemonList in a IIFE
 let pokemonRepository = (function () {
 	let pokemonList = [];
-	let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=500";	//url of the pokemon API
+	let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=600";	//url of the pokemon API
 
 // returns the entire pokemon list
 function getAll() {
@@ -92,6 +92,7 @@ function showDetails(pokemon){
 		let modalTypes = document.querySelector(".modal-types");
 		let modalAbilities = document.querySelector(".modal-abilities");
 		let modalImg =  document.querySelector(".modal-image");
+		
 
 		//Setting src attribute
 		modalImg.setAttribute("src",pokemon.imageUrl);							
@@ -114,16 +115,35 @@ function showDetails(pokemon){
 		})
 		
 		modalTypes.innerText = DisplayedPokemonTypes;
+		document.querySelector(".modal-abilities-description-row").innerText ="";
 
 		//Setting displayed abilities
-		let displayedPokemonAbilities = "";	
-		pokemon.abilities.forEach(function(abilities,index){
-			if(index != 0)
-			displayedPokemonAbilities = displayedPokemonAbilities + ", ";				//set comma in front of 2nd,3rd,etc ability
-			displayedPokemonAbilities = displayedPokemonAbilities + capitalizeFirstChar(abilities.ability.name);			//concat the new type
-		})
+		modalAbilities.innerText = "";
 
-		modalAbilities.innerText = displayedPokemonAbilities;
+		let abilityButton = [];//document.createElement("button");
+		let i= 0;
+		pokemon.abilities.forEach((ability)=>{
+			abilityButton[i] = document.createElement("button");
+			abilityButton[i].setAttribute("id",`${ability.ability.name}-button`)
+			if(i!=0)
+				modalAbilities.innerHTML = modalAbilities.innerHTML + ", ";	
+			abilityButton[i].classList.add("modal-ability-button");
+			abilityButton[i].innerText = capitalizeFirstChar(ability.ability.name);
+			abilityButtonEvent(abilityButton[i],ability.ability.name);
+			document.querySelector(".modal-abilities").appendChild(abilityButton[i]);
+			let abilityDescription = document.createElement("div");
+			abilityDescription.classList.add("col","offset-3","col-9","ability-description","d-none");
+			abilityDescription.setAttribute("id",`${ability.ability.name}-text`);
+			abilityDescription.innerText = ability.ability.name;
+			document.querySelector(".modal-abilities-description-row").appendChild(abilityDescription);
+
+		})
+			//abilityButton.forEach(function(button){
+			//abilityButtonEvent(button);
+		//})
+
+
+		//modalAbilities.innerText = displayedPokemonAbilities;
 	})
 }
 //shows details (through an event listener) when pokemon button is pressed
@@ -153,8 +173,7 @@ function loadList() {
 //loads a pokemon details by using the url saved in the pokemon object
 
 function loadDetails(item) {
-	let url = item.detailsUrl;
-	return fetch(url).then(function (response) {
+	return fetch(item.detailsUrl).then(function (response) {
 	  return response.json();
 	}).then(function (details) {
 	  // Now we add the details to the item
@@ -163,15 +182,37 @@ function loadDetails(item) {
 	  item.weight = details.weight;
 	  item.types = details.types;
 	  item.abilities = details.abilities;
+  
 	}).catch(function (e) {
 	  console.error(e);
 	});
  }
 
+function abilityButtonEvent(button){
+	button.addEventListener("click",function(){
+		document.querySelectorAll(".ability-description").forEach(function(item){
+			item.classList.add("d-none");
+		})
+		document.getElementById(`${button.innerText.toLowerCase()}-text`).classList.remove("d-none");
+	});
+}
+
+/*function abilityButtonEventDelegate(abilityName) {
+	return function() {
+		document.querySelectorAll(".ability-description").forEach(function(item,i){
+			item.classList.add("d-none");
+		})
+		document.getElementById(`${abilityName}-text`).classList.remove("d-none");
+		console.log("test");
+	}
+}*/
+
+
+
  let searchInput = document.getElementById("pokemon-search");
  
  searchInput.addEventListener("keyup",function(){
-//	document.getElementById("bulbasaur").classList.add("d-none");
+	
 
 	document.querySelectorAll(".pokemon-list-item").forEach(function(item){
 		item.classList.add("d-none");
@@ -190,7 +231,9 @@ function loadDetails(item) {
 	  	showDetails : showDetails,
 	  	addPokemonButtonEvent : addPokemonButtonEvent,
 	  	loadList : loadList,
-		loadDetails : loadDetails
+		loadDetails : loadDetails,
+		abilityButtonEvent : abilityButtonEvent
+		//abilityButtonEventDelegate : abilityButtonEventDelegate
 	};
 })();
 
