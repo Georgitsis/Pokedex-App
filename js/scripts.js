@@ -195,15 +195,20 @@ function showAbilities(pokemon) {
 			return response.json();
 		 })
 			 .then(function (abilityDetails) {
-				abilityDescription.innerText = abilityDetails.effect_entries[1].short_effect;
+				
+				abilityDetails.effect_entries.forEach(function(entry){
+					if(entry.language.name == "en")
+					//console.log(entry.short_effect);	
+					abilityDescription.innerText = entry.short_effect;
+				})
+								
 				document.querySelector(".modal-abilities-description-row").appendChild(abilityDescription);
 				
 			})
 			.catch(function() {
 				return "Could not retrieve ability details!";
 			})
-		document.querySelector(".modal-abilities-description-row").appendChild(abilityDescription);
-		
+				
 		})
 }
 
