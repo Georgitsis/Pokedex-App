@@ -1,0 +1,143 @@
+body {
+  background-color: #FFCC00;
+}
+
+main {
+  background-color: #FFCC00;
+  margin: 0px 40px;
+}
+
+.navbar {
+  background-color: #0075BE;
+  color: #FFCC00;
+}
+.navbar .navbar-brand {
+  color: #edf9e8;
+}
+.navbar .navbar-brand:hover {
+  color: #ffe680;
+}
+.navbar .navbar-brand:active {
+  opacity: 0.8;
+}
+
+.page-logo-wrapper {
+  text-align: center;
+  margin: 40px 0px;
+  border-bottom: 2px solid #0075BE;
+  padding: 25px;
+}
+.page-logo-wrapper img.page-logo {
+  max-width: 300px;
+  text-align: center;
+}
+
+.pokemon-list-item {
+  background-color: #FFCC00;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.pokemon-button {
+  color: #FFCC00;
+  font-weight: bold;
+  background-color: #0075BE;
+  border: 4px solid #0A285F;
+  border-radius: 5px;
+}
+.pokemon-button:hover {
+  background-color: #0094f1;
+  border-color: #0f3b8d;
+}
+.pokemon-button:focus {
+  outline: #0075BE dotted 4px;
+}
+
+.button-row {
+  align-items: center;
+  justify-content: center;
+}
+
+.pokemon-button-text {
+  white-space: nowrap;
+  font-size: x-large;
+}
+
+.modal-content {
+  min-height: 300px;
+  width: 500px;
+  background-color: #FFCC00;
+  border: 4px solid #0A285F;
+  border-radius: 9px;
+  font-weight: bold;
+}
+.modal-content .modal-header {
+  background-color: #0075BE;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom: 2px solid #0A285F;
+}
+.modal-content .modal-header .modal-title {
+  font-size: x-large;
+  font-weight: bold;
+  color: #FFCC00;
+}
+.modal-content .modal-header .close {
+  color: #FFCC00;
+  text-shadow: 0 1px 0 #D5A100;
+  opacity: 1;
+}
+.modal-content .modal-header .close:hover {
+  color: #ffe680;
+}
+.modal-content .modal-header .close:not(:disabled):not(.disabled) {
+  opacity: 1;
+}
+.modal-content .modal-body {
+  border-bottom: 2px solid #0A285F;
+  border-top: 2px solid #0A285F;
+  color: #0A285F;
+  display: flex;
+  align-items: top;
+}
+.modal-content .modal-body .modal-image {
+  max-width: 150px;
+}
+.modal-content .modal-body .modal-ability-button {
+  color: #0A285F;
+  border: none;
+  padding: 0;
+  margin-right: 6px;
+  background-color: transparent;
+  font-weight: bold;
+  -webkit-text-decoration: underline #0A285F;
+          text-decoration: underline #0A285F;
+}
+.modal-content .modal-body .modal-ability-button:active {
+  outline: #0075BE dotted 1px;
+}
+.modal-content .modal-body .modal-ability-button:focus {
+  outline: #0075BE dotted 1px;
+}
+.modal-content .modal-body .ability-description {
+  font-weight: normal;
+}
+.modal-content .modal-footer {
+  background-color: #0075BE;
+  border-top: 2px solid #0A285F;
+}
+.modal-content .modal-close-button {
+  font-weight: bold;
+  color: #0A285F;
+  background-color: #FFCC00;
+  border: 3px solid #0A285F;
+}
+.modal-content .modal-close-button:hover {
+  background-color: #ffe680;
+  border-color: #0f3b8d;
+}
+.modal-content .modal-close-button:not(:disabled):not(.disabled):active {
+  opacity: 1;
+  background-color: #ffe680;
+}/*# sourceMappingURL=styles.css.map */
