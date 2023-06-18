@@ -33,15 +33,15 @@ const addListItem = (pokemon) => {
 	
 //create list item and append to ul
 	
-		let listElement = document.createElement('li');
-		listElement.classList.add("pokemon-list-item",'col-12','col-md-6','col-xl-4','list-group-item');
+		let listElement = document.createElement("li");
+		listElement.classList.add("pokemon-list-item","col-12","col-md-6","col-xl-4","list-group-item");
 		listElement.setAttribute("id",pokemon.name);
 		document.querySelector("ul.pokemon-list").appendChild(listElement);
 
 //create pokemon button and append to ListElement
 
-		let pokemonButton = document.createElement('button');	
-		pokemonButton.classList.add('btn-block','pokemon-button');	
+		let pokemonButton = document.createElement("button");	
+		pokemonButton.classList.add("btn-block","pokemon-button");	
 		pokemonButton.setAttribute("data-toggle","modal");	
 		pokemonButton.setAttribute("data-target","#pokemonModal");	
 		addPokemonButtonEvent(pokemonButton,pokemon);
