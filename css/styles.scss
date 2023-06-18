@@ -4,8 +4,6 @@ $SecondaryColorBright:     #0075BE;
 $SecondaryColorDark:       #0A285F;
 $PokemonButtonBackground:  rgba(255, 244, 199, 0.8);
 
-
-
 body {
    background-color: $PrimaryColorBright;
 }
@@ -144,7 +142,7 @@ main {
       }
 
       .ability-description {
-         font-weight://bold;normal;
+         font-weight: normal;
       }
 
 }
