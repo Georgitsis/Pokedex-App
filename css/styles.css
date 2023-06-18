@@ -120,6 +120,9 @@ main {
 .modal-content .modal-body .modal-ability-button:focus {
   outline: #0075BE dotted 1px;
 }
+.modal-content .modal-body .ability-description {
+  font-weight: normal;
+}
 .modal-content .modal-footer {
   background-color: #0075BE;
   border-top: 2px solid #0A285F;
