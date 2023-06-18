@@ -30,7 +30,7 @@ const addListItem = (pokemon) => {
 //create list item and append to ul
 	
 		let listElement = document.createElement('li');
-		listElement.classList.add("pokemon-list-item",'col-12','col-sm-6','col-md-4','col-lg-3','list-group-item');
+		listElement.classList.add("pokemon-list-item",'col-12','col-md-6','col-xl-4','list-group-item');
 		listElement.setAttribute("id",pokemon.name);
 		document.querySelector("ul.pokemon-list").appendChild(listElement);
 //create pokemon button and append to ListElement
