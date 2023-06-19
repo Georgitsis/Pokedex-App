@@ -6,6 +6,7 @@ Displays  a list of pokemon and shows more information about a selected pokemon 
 A search by pokemon name is also possible
 
 ##Link to the live web page##
+
 https://psychoboyjack83.github.io/Pokedex-App/
 
 ##API-link##
