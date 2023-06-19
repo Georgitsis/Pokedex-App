@@ -213,7 +213,7 @@ function showAbilities(pokemon) {
 		
 		//creating a div which will hold the ability description
 		let abilityDescription = document.createElement("div");
-		abilityDescription.classList.add("col","offset-3","col-9","ability-description","d-none");
+		abilityDescription.classList.add("col","offset-4","col-8","ability-description","d-none");
 		
 		//setting ability descriptions id. is used by event handler to make the correct div visible
 		abilityDescription.setAttribute("id",`${ability.ability.name}-text`);
