@@ -38,7 +38,13 @@ main {
    img.page-logo{
       max-width: 300px;
       text-align: center;
-   }
+   
+      @media all and (max-width: 400px) {
+         
+            max-width: 60vw;
+         
+      }   
+   }   
 }
 
 .pokemon-list-item {
@@ -65,6 +71,18 @@ main {
       }
    }
 
+   @media all and (max-width: 400px) {
+      .pokemon-button-img {
+         max-width: 80px;
+      }
+   }
+
+   @media all and (max-width: 350px) {
+      .pokemon-button-img {
+         max-width: 64px;
+      }
+   }  
+   
    .button-row {
       align-items: center;
       justify-content: center;
@@ -117,10 +135,17 @@ main {
       border-top: 2px solid $SecondaryColorDark;
       color: $SecondaryColorDark;      
       display: flex;
-      align-items: top;
+      //align-items: top;
   
       .modal-image {
          max-width: 150px;
+         align-self: flex-start;
+      }
+
+      @media all and (max-width: 500px) {
+         .modal-image {
+            max-width: 25%;
+         }
       }
 
       .modal-ability-button {
